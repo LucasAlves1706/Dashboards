@@ -1,0 +1,1010 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Acompanhamento Contábil · E-CONTAFACIL LTDA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Saira:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: app shell — Protechtor navy side rail with the white logo + cool blue-white workspace; one bright blue accent, steel/silver secondaries. */
+:root{
+  --bg:#f1f4f8; --surface:#ffffff; --surface-2:#f5f7fa; --fg:#0c1a2a; --muted:#566373; --faint:#86919e;
+  --line:#dce2ea; --line-2:#c6cfda;
+  --chrome:#03264a; --chrome-2:#0a335f; --chrome-fg:#ffffff; --chrome-muted:#9db2c9; --chrome-line:#164475; --weave:rgba(255,255,255,.035); --glow:rgba(120,180,255,.16);
+  --acc:#1767c9; --acc-hi:#7fbcff; --acc-pale:#d7e9ff; --acc-soft:#e3eefc; --acc-ink:#0f4f9e;
+  --silver:#9aa6b3; --silver-hi:#dfe5ec;
+  --c1:#03264a; --c2:#5a7896; --c3:#b3c2d2; --c4:#1f7fe6; --c5:#8b97a5;
+  --pos:#1b7a4e; --pos-soft:#e2f1e9; --neg:#b23636; --neg-soft:#f8e4e4; --warn:#94650f; --warn-soft:#f6eedb;
+  --shadow:0 1px 2px rgba(3,38,74,.05),0 6px 20px rgba(3,38,74,.06); --scrim:rgba(3,22,44,.45);
+  --font-display:"Saira","Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Barlow",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#06111d; --surface:#0d1b2b; --surface-2:#122336; --fg:#e6edf5; --muted:#9fb0c2; --faint:#6f8297;
+  --line:#1c2e43; --line-2:#284058;
+  --chrome:#021a33; --chrome-2:#0a2a4d; --chrome-fg:#ffffff; --chrome-muted:#8ea6bf; --chrome-line:#123a63; --weave:rgba(255,255,255,.03); --glow:rgba(120,180,255,.12);
+  --acc:#4d9dff; --acc-hi:#8cc4ff; --acc-pale:#d7e9ff; --acc-soft:#10294a; --acc-ink:#8cc4ff;
+  --silver:#7f8b98; --silver-hi:#c9d2dc;
+  --c1:#d5e2f0; --c2:#7f9dbd; --c3:#36506c; --c4:#4d9dff; --c5:#8896a6;
+  --pos:#55c08b; --pos-soft:#11271d; --neg:#e57373; --neg-soft:#2d1719; --warn:#dba94b; --warn-soft:#2a2212;
+  --shadow:none; --scrim:rgba(0,0,0,.6); color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#06111d; --surface:#0d1b2b; --surface-2:#122336; --fg:#e6edf5; --muted:#9fb0c2; --faint:#6f8297;
+  --line:#1c2e43; --line-2:#284058;
+  --chrome:#021a33; --chrome-2:#0a2a4d; --chrome-fg:#ffffff; --chrome-muted:#8ea6bf; --chrome-line:#123a63; --weave:rgba(255,255,255,.03); --glow:rgba(120,180,255,.12);
+  --acc:#4d9dff; --acc-hi:#8cc4ff; --acc-pale:#d7e9ff; --acc-soft:#10294a; --acc-ink:#8cc4ff;
+  --silver:#7f8b98; --silver-hi:#c9d2dc;
+  --c1:#d5e2f0; --c2:#7f9dbd; --c3:#36506c; --c4:#4d9dff; --c5:#8896a6;
+  --pos:#55c08b; --pos-soft:#11271d; --neg:#e57373; --neg-soft:#2d1719; --warn:#dba94b; --warn-soft:#2a2212;
+  --shadow:none; --scrim:rgba(0,0,0,.6); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--chrome)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+.carbon{background-color:var(--chrome);background-image:radial-gradient(900px 380px at 100% 0%,var(--glow),transparent 62%),repeating-linear-gradient(135deg,var(--weave) 0 1px,transparent 1px 10px)}
+
+/* ---------- shell ---------- */
+.app{display:grid;grid-template-columns:264px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:env(safe-area-inset-top,0px);height:calc(100vh - env(safe-area-inset-top,0px));color:var(--chrome-fg);
+  display:flex;flex-direction:column;gap:28px;overflow-y:auto;
+  padding-block:26px;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:22px;border-right:1px solid var(--chrome-line)}
+.brand{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.logo{display:block;width:100%;max-width:196px;height:auto;background:#fff;padding:10px 12px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.mark{width:38px;height:38px;flex:none}
+.mark .p1{fill:var(--silver)} .mark .p2{fill:var(--silver-hi)} .mark .p3{fill:var(--acc-hi)}
+.brand-name{font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:.14em}
+.brand-sub{font-size:11.5px;color:var(--chrome-muted);letter-spacing:.04em}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav-label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--chrome-muted);margin:0 0 8px 10px}
+.nav-item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;border-radius:8px;
+  padding:10px 10px;color:var(--chrome-muted);cursor:pointer;font-size:14.5px;font-weight:500;position:relative;transition:background .15s,color .15s}
+.nav-item:hover{background:var(--chrome-2);color:var(--chrome-fg)}
+.nav-item[aria-current="page"]{background:var(--chrome-2);color:var(--chrome-fg)}
+.nav-item[aria-current="page"] .nav-k{color:var(--acc-hi)}
+.nav-item[aria-current="page"]::after{content:"";position:absolute;right:10px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--acc-hi)}
+.nav-k{font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--chrome-muted);width:20px;font-variant-numeric:tabular-nums}
+.side-foot{margin-top:auto;display:grid;gap:14px;font-size:12.5px;color:var(--chrome-muted)}
+.side-foot dl{margin:0;display:grid;gap:8px}
+.side-foot dt{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
+.side-foot dd{margin:0;color:var(--chrome-fg);font-size:13px}
+.ghost{background:transparent;border:1px solid var(--chrome-line);color:var(--chrome-fg);border-radius:8px;padding:8px 12px;cursor:pointer;font-size:13px;display:inline-flex;align-items:center;gap:8px}
+.ghost:hover{border-color:var(--chrome-muted)}
+
+.main{min-width:0;display:flex;flex-direction:column}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;
+  padding-block:14px;padding-left:36px;padding-right:max(36px,env(safe-area-inset-right,0px))}
+.crumb{min-width:0}
+.crumb small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.crumb h2{font-size:21px;font-weight:600;line-height:1.2}
+.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.step{font-family:var(--font-display);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin-right:4px}
+.iconbtn{width:36px;height:36px;border-radius:8px;border:1px solid var(--line-2);background:var(--surface);display:inline-grid;place-items:center;cursor:pointer;color:var(--fg)}
+.iconbtn:hover{border-color:var(--acc)}
+.iconbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.content{padding-block:28px 56px;padding-left:36px;padding-right:max(36px,env(safe-area-inset-right,0px));max-width:1360px;width:100%}
+.view{display:grid;gap:22px;animation:rise .35s ease both}
+@keyframes rise{from{opacity:.35;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}.nav-item{transition:none}}
+
+/* ---------- components ---------- */
+.row{display:grid;gap:22px}
+.r-2{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr)}
+.r-2e{grid-template-columns:repeat(2,minmax(0,1fr))}
+.r-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.r-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);min-width:0;display:flex;flex-direction:column;gap:14px}
+.card-h{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.card-h > div{min-width:0}
+.card h3{font-size:16px;font-weight:600;letter-spacing:.005em}
+.sub{color:var(--muted);font-size:13px;margin:2px 0 0}
+.card-h .legend{margin-left:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.legend i.ln{height:3px;border-radius:2px;width:14px}
+.kpi{gap:6px;padding:18px 20px}
+.lbl{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.kv{font-family:var(--font-display);font-size:27px;font-weight:600;line-height:1.15;letter-spacing:-.005em}
+.kf{font-size:13px;color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:1px 9px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill.pos{background:var(--pos-soft);color:var(--pos)}
+.pill.neg{background:var(--neg-soft);color:var(--neg)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.gold{background:var(--acc-soft);color:var(--acc-ink)}
+.pill.flat{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.pos-t{color:var(--pos)} .neg-t{color:var(--neg)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:16px;color:var(--chrome-fg);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;padding:34px 36px;border:1px solid var(--chrome-line)}
+.hero::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--acc-hi) 25%,var(--chrome-fg) 50%,var(--acc-hi) 75%,transparent)}
+.hero .eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--chrome-muted);margin:0 0 14px}
+.hero h1{font-size:clamp(28px,3.4vw,42px);line-height:1.1;font-weight:600;letter-spacing:-.01em}
+.metal{background:linear-gradient(100deg,var(--chrome-fg) 0%,var(--acc-pale) 35%,var(--acc-hi) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{color:var(--chrome-muted);font-size:15.5px;max-width:52ch;margin:16px 0 0}
+.hero-m{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--chrome-line);border-radius:12px;align-self:center;background:rgba(0,0,0,.25)}
+.hero-m > div{padding:16px 18px;display:grid;gap:3px}
+.hero-m > div:nth-child(odd){border-right:1px solid var(--chrome-line)}
+.hero-m > div:nth-child(-n+2){border-bottom:1px solid var(--chrome-line)}
+.hero-m .lbl{color:var(--chrome-muted)}
+.hero-m .kv{font-size:24px}
+.hero-m .kf{color:var(--chrome-muted)}
+
+/* quarter cards */
+.q-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.q-name{font-family:var(--font-display);font-weight:600;font-size:15px}
+.q-mo{font-size:12px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
+.q-big{font-family:var(--font-display);font-size:30px;font-weight:600;line-height:1.1}
+.q-rows{display:grid;gap:6px;font-size:13.5px;border-top:1px solid var(--line);padding-top:12px}
+.q-rows div{display:flex;justify-content:space-between;gap:10px}
+.q-rows span:first-child{color:var(--muted)}
+.q-rows span:last-child{font-variant-numeric:tabular-nums;font-weight:600}
+.qbars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:end;height:56px}
+.qbars div{display:grid;gap:4px;justify-items:center;font-size:11px;color:var(--faint);height:100%;grid-template-rows:1fr auto}
+.qbars b{display:block;width:100%;max-width:34px;border-radius:3px 3px 0 0;align-self:end}
+
+/* notes */
+.notes{background:var(--surface-2)}
+.notes ul{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.notes li{display:grid;grid-template-columns:10px minmax(0,1fr);gap:12px;font-size:14.5px;line-height:1.5}
+.notes li::before{content:"";width:7px;height:7px;margin-top:8px;transform:rotate(45deg);background:var(--acc)}
+.notes b{font-weight:600}
+
+/* charts */
+.chart{width:100%;height:300px;position:relative}
+.chart.sm{height:240px}
+.chart svg{display:block;overflow:visible}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .zero{stroke:var(--line-2);stroke-width:1}
+.chart .tick{fill:var(--faint);font-size:11px;font-family:var(--font-body)}
+.chart .xl{fill:var(--muted);font-size:11.5px;font-family:var(--font-body)}
+.chart .vl{fill:var(--fg);font-size:11px;font-weight:600;font-family:var(--font-body);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round}
+.chart .hit{fill:transparent;cursor:crosshair}
+.chart .hl{fill:var(--fg);opacity:0;transition:opacity .12s}
+.chart .col.on .hl{opacity:.045}
+.f1{fill:var(--c1)} .f2{fill:var(--c2)} .f3{fill:var(--c3)} .f4{fill:var(--c4)} .f5{fill:var(--c5)}
+.fpos{fill:var(--pos)} .fneg{fill:var(--neg)} .facc{fill:var(--acc)}
+.s1{stroke:var(--c1)} .s2{stroke:var(--c2)} .s4{stroke:var(--c4)} .sacc{stroke:var(--acc)}
+.ln{fill:none;stroke-width:2.25;stroke-linejoin:round;stroke-linecap:round}
+.dot{fill:var(--surface);stroke-width:2}
+.area1{fill:var(--c1);opacity:.07} .area4{fill:var(--c4);opacity:.12}
+.ref{stroke:var(--acc);stroke-dasharray:4 4;stroke-width:1.5}
+.bg1{background:var(--c1)} .bg2{background:var(--c2)} .bg3{background:var(--c3)} .bg4{background:var(--c4)} .bg5{background:var(--c5)} .bgacc{background:var(--acc)}
+.bgpos{background:var(--pos)} .bgneg{background:var(--neg)}
+
+/* hbars */
+.hb{display:grid;gap:10px}
+.hb-r{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;font-size:13.5px}
+.hb-r .nm,.hb-btn .nm{min-width:0;overflow-wrap:anywhere}
+.hb-r .vv,.hb-btn .vv{font-variant-numeric:tabular-nums;font-weight:600;text-align:right;white-space:nowrap}
+.hb-r .vv small,.hb-btn .vv small{font-weight:500;color:var(--faint);margin-left:8px}
+.hb-t{grid-column:1/-1;height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden;border:1px solid var(--line)}
+.hb-t i{display:block;height:100%;border-radius:4px}
+
+/* stats strip */
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.strip div{padding:12px 14px;display:grid;gap:2px;border-right:1px solid var(--line)}
+.strip div:last-child{border-right:0}
+.strip b{font-family:var(--font-display);font-size:20px;font-weight:600}
+.strip span{font-size:12px;color:var(--muted)}
+
+/* controls */
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:9px;padding:3px;background:var(--surface)}
+.seg button{border:0;background:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--chrome);color:var(--chrome-fg)}
+.btn{border:1px solid var(--line-2);background:var(--surface);border-radius:9px;padding:7px 12px;cursor:pointer;font-size:13.5px;font-weight:500}
+.btn:hover{border-color:var(--acc)}
+.chip{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 12px;cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);display:inline-flex;gap:6px;align-items:center}
+.chip b{font-variant-numeric:tabular-nums;color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--acc-soft);border-color:var(--acc);color:var(--acc-ink)}
+.chip[aria-pressed="true"] b{color:var(--acc-ink)}
+.search{flex:1 1 220px;max-width:340px;min-width:0;border:1px solid var(--line-2);background:var(--surface);color:var(--fg);border-radius:9px;padding:8px 12px 8px 34px;font:inherit;font-size:14px;
+  background-image:radial-gradient(circle at 15px 50%,transparent 5px,var(--faint) 5.6px,var(--faint) 6.8px,transparent 7.4px);background-repeat:no-repeat}
+.search:focus{outline:2px solid var(--acc);outline-offset:0;border-color:transparent}
+select.sel{border:1px solid var(--line-2);background:var(--surface);color:var(--fg);border-radius:9px;padding:7px 10px;font:inherit;font-size:13.5px}
+
+/* tables */
+.tw{overflow:auto;max-height:72vh;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.tw.short{max-height:520px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-variant-numeric:tabular-nums;font-size:13.5px}
+th,td{padding:8px 12px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;z-index:1;background:inherit;white-space:normal;min-width:240px}
+thead th{position:sticky;top:0;z-index:2;background:var(--surface-2);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+thead th:first-child{z-index:3}
+tbody tr{background:var(--surface)}
+tbody tr:hover{background:var(--surface-2)}
+td .code{display:block;font-size:11px;color:var(--faint);letter-spacing:.02em}
+td.l{text-align:left}
+tr.g{background:var(--surface-2);font-weight:600;cursor:pointer}
+tr.g td:first-child{font-family:var(--font-display);font-size:13.5px;letter-spacing:.01em}
+tr.g .car{display:inline-block;width:14px;transition:transform .15s;color:var(--acc)}
+tr.g[aria-expanded="true"] .car{transform:rotate(90deg)}
+tr.g.leaf{cursor:default}
+tr.t{background:var(--chrome);color:var(--chrome-fg);font-weight:600}
+tr.t:hover{background:var(--chrome)}
+tr.t td{border-bottom-color:var(--chrome-line)}
+tr.t td:first-child{font-family:var(--font-display);color:var(--acc-hi);letter-spacing:.04em}
+td.acc{font-weight:600}
+td.pc{color:var(--muted)}
+tr.t td.pc{color:var(--chrome-muted)}
+tr.c td:first-child{padding-left:30px}
+tr.sel{background:var(--acc-soft)!important}
+tr.click{cursor:pointer}
+.sp{display:block}
+.sp .ln{stroke-width:1.6}
+.bar-in{display:inline-block;vertical-align:middle;height:6px;border-radius:3px;background:var(--c3);margin-left:8px}
+.gchip{font-size:11.5px;border-radius:6px;padding:1px 7px;border:1px solid var(--line-2);color:var(--muted);white-space:nowrap}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+.foot{font-size:12.5px;color:var(--faint)}
+
+#tip{position:fixed;z-index:60;pointer-events:none;background:var(--chrome);color:var(--chrome-fg);border:1px solid var(--chrome-line);border-radius:9px;padding:10px 12px;font-size:12.5px;min-width:180px;box-shadow:0 8px 24px rgba(0,0,0,.25);font-variant-numeric:tabular-nums}
+#tip .th{font-family:var(--font-display);font-weight:600;font-size:13px;margin-bottom:6px;color:var(--acc-hi)}
+#tip .tr{display:flex;align-items:center;gap:8px;justify-content:space-between;line-height:1.7}
+#tip .tr span:first-child{display:inline-flex;align-items:center;gap:6px;color:var(--chrome-muted)}
+#tip i{width:8px;height:8px;border-radius:2px;display:inline-block}
+
+
+/* drill-down */
+tr.c{cursor:pointer}
+tr.c td:not(:first-child):not(.pc):hover{color:var(--acc-ink);text-decoration:underline;text-underline-offset:3px}
+tr.c td:first-child .nm-go{opacity:0;margin-left:6px;color:var(--acc);font-weight:600;transition:opacity .12s}
+tr.c:hover td:first-child .nm-go,tr.c:focus-visible td:first-child .nm-go{opacity:1}
+.hb-btn{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;width:calc(100% + 16px);margin:-5px -8px;padding:5px 8px;border:0;background:none;text-align:left;border-radius:8px;cursor:pointer;font-size:13.5px}
+.hb-btn:hover{background:var(--surface-2)}
+.hb-btn:hover .nm{color:var(--acc-ink)}
+.dr-back{position:fixed;inset:0;background:var(--scrim);z-index:39}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:40;width:min(980px,100%);background:var(--bg);display:flex;flex-direction:column;box-shadow:-24px 0 48px rgba(3,22,44,.25);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px);animation:slide .22s ease both}
+@keyframes slide{from{transform:translateX(24px);opacity:.6}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.drawer{animation:none}}
+.dr-h{display:flex;gap:16px;align-items:flex-start;padding:20px 24px 16px;color:var(--chrome-fg)}
+.dr-h > div{min-width:0;flex:1}
+.dr-h .lbl{color:var(--chrome-muted)}
+.dr-h h3{font-size:20px;font-weight:600;margin-top:2px}
+.dr-h .sub{color:var(--chrome-muted)}
+.dr-h .iconbtn{background:transparent;border-color:var(--chrome-line);color:var(--chrome-fg)}
+.dr-tools{display:grid;gap:12px;padding:16px 24px 12px;border-bottom:1px solid var(--line)}
+.dr-tools .search{max-width:none}
+.dr-sum{margin:0 24px 12px}
+.dr-body{flex:1;min-height:0;padding:0 24px 20px;display:flex;flex-direction:column;gap:12px}
+.dr-body .tw{flex:1 1 auto;min-height:0;max-height:none;overflow:auto}
+.dr-body > .strip,.dr-body > .tools{flex:none}
+table.dt th:first-child,table.dt td:first-child{position:static;min-width:0}
+table.dt thead th{top:0}
+table.dt td.h{white-space:normal;min-width:260px;text-align:left;color:var(--fg)}
+table.dt td.l,table.dt th.l{text-align:left}
+table.dt td.f{white-space:normal;min-width:170px;text-align:left}
+table.dt tr.click:hover td{color:var(--acc-ink)}
+.chip:disabled{opacity:.4;cursor:default}
+.okpill{align-self:center}
+@media (max-width:560px){.dr-h,.dr-tools,.dr-body{padding-left:16px;padding-right:16px}.dr-sum{margin-inline:16px}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1180px){.r-2{grid-template-columns:minmax(0,1fr)} .hero{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:980px){
+  .app{display:block}
+  .side{position:static;height:auto;gap:14px;padding-block:16px 10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-right:0}
+  .nav{flex-direction:row;overflow-x:auto;gap:4px;margin-inline:-4px;padding-bottom:4px}
+  .nav-label,.side-foot{display:none}
+  .logo{width:150px}
+  .nav-item{width:auto;white-space:nowrap;padding:8px 12px}
+  .nav-item[aria-current="page"]::after{display:none}
+  .topbar{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .content{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+  .r-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .r-3,.r-2e{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .hero{padding:24px 20px;gap:22px}
+  .hero-m .kv{font-size:20px}
+  .kv{font-size:22px}
+  .strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .strip div:nth-child(2){border-right:0}
+  .strip div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .chart{height:260px}
+  .step,#fsBtn{display:none}
+  th:first-child,td:first-child{min-width:180px}
+  .crumb h2{font-size:18px}
+}
+</style>
+
+</head>
+<body>
+<div class="app">
+  <aside class="side carbon" aria-label="Navegação">
+    <div class="brand">
+      <div class="brand-name" id="brandName" style="font-size:15px;letter-spacing:.06em;line-height:1.3"></div>
+      <div class="brand-sub">Acompanhamento contábil</div>
+    </div>
+    <nav class="nav" id="nav">
+      <p class="nav-label">Apresentação</p>
+    </nav>
+    <div class="side-foot">
+      <dl>
+        <div><dt>Período</dt><dd id="perLong"></dd></div>
+        <div><dt>Base</dt><dd>Razão contábil · regime de competência</dd></div>
+        <div><dt>Empresa</dt><dd id="empDd"></dd></div>
+      </dl>
+      <div><button class="ghost" id="themeBtn" type="button">Alternar tema</button></div>
+      <div style="font-size:11.5px">Use ← → para avançar entre as telas.</div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="crumb"><small id="perShort"></small><h2 id="crumbTitle">Visão geral</h2></div>
+      <div class="tb-actions">
+        <span class="step" id="step">1 / 6</span>
+        <button class="iconbtn" id="prevBtn" type="button" aria-label="Tela anterior"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="iconbtn" id="nextBtn" type="button" aria-label="Próxima tela"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button class="iconbtn" id="fsBtn" type="button" aria-label="Tela cheia"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- 1 VISÃO -->
+      <section class="view" id="view-visao" data-title="Visão geral">
+        <div class="hero carbon">
+          <div>
+            <p class="eyebrow" id="eyebrow"></p>
+            <h1 id="heroH"></h1>
+            <p class="lead" id="heroLead"></p>
+          </div>
+          <div class="hero-m" id="heroM"></div>
+        </div>
+        <div class="row r-3" id="triCards"></div>
+        <div class="row r-2">
+          <div class="card">
+            <div class="card-h"><div><h3>Receita líquida, CMV e margem bruta</h3><p class="sub">Mês a mês · passe o cursor sobre um mês para ver o detalhe</p></div>
+              <div class="legend"><span><i class="bg1"></i>Receita líquida</span><span><i class="bg3"></i>CMV</span><span><i class="ln bgacc"></i>Margem bruta</span></div></div>
+            <div class="chart" id="chMonth"></div>
+          </div>
+          <div class="card notes"><h3>Pontos de leitura</h3><ul id="notesVisao"></ul></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><div><h3>Da receita bruta ao lucro</h3><p class="sub" id="subWater"></p></div>
+            <div class="legend"><span><i class="bg1"></i>Total</span><span><i class="bg3"></i>Redução</span><span><i class="bgpos"></i>Acréscimo</span><span><i class="bgacc"></i>Lucro</span></div></div>
+          <div class="chart" id="chWater"></div>
+        </div>
+        <div class="row r-2" id="rowBr">
+          <div class="card">
+            <div class="card-h"><div><h3 id="brTitle"></h3><p class="sub" id="brSub"></p></div>
+              <div class="legend" id="brLg"></div></div>
+            <div class="chart" id="chQ2"></div>
+          </div>
+          <div class="card notes"><h3>O que mudou entre os trimestres</h3><ul id="notesQ2"></ul></div>
+        </div>
+      </section>
+
+      <!-- 2 DRE -->
+      <section class="view" id="view-dre" data-title="DRE conta a conta" hidden>
+        <div class="tools">
+          <div class="seg" role="group" aria-label="Período"><button type="button" data-mode="m" aria-pressed="true">Mensal</button><button type="button" data-mode="t" aria-pressed="false">Trimestral</button></div>
+          <button class="btn" type="button" id="dreOpen">Abrir todos os grupos</button>
+          <button class="btn" type="button" id="dreClose">Recolher</button>
+          <input class="search" id="dreSearch" type="search" placeholder="Buscar conta ou código" aria-label="Buscar conta">
+        </div>
+        <div class="tw"><table id="dreTbl"></table></div>
+        <p class="foot" id="dreFoot"></p>
+      </section>
+
+      <!-- 3 RECEITA -->
+      <section class="view" id="view-receita" data-title="Receita e clientes" hidden>
+        <div class="row r-4" id="kRec"></div>
+        <div class="row r-2">
+          <div class="card">
+            <div class="card-h"><div><h3>Receita bruta por mês</h3><p class="sub">Principais contas de receita</p></div>
+              <div class="legend" id="lgRec"></div></div>
+            <div class="chart" id="chRec"></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h3>Deduções sobre vendas</h3><p class="sub" id="dedSub"></p></div></div>
+            <div class="hb" id="hbDed"></div>
+            <p class="foot" id="dedFoot"></p>
+          </div>
+        </div>
+        <div class="row r-2">
+          <div class="card">
+            <div class="card-h"><div><h3>Concentração de clientes</h3><p class="sub">Participação na receita bruta acumulada</p></div></div>
+            <div class="strip" id="cliStrip"></div>
+            <div class="hb" id="hbCli"></div>
+          </div>
+          <div class="card notes"><h3>Pontos de leitura</h3><ul id="notesRec"></ul></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><div><h3>Todos os clientes</h3><p class="sub" id="cliCount"></p></div>
+            <input class="search" id="cliSearch" type="search" placeholder="Buscar cliente" aria-label="Buscar cliente" style="margin-left:auto"></div>
+          <div class="tw short"><table id="cliTbl"></table></div>
+        </div>
+      </section>
+
+      <!-- 4 CUSTOS -->
+      <section class="view" id="view-custos" data-title="Custos e estoques" hidden>
+        <div class="row r-4" id="kCus"></div>
+        <div class="row r-2">
+          <div class="card">
+            <div class="card-h"><div><h3>Composição do CMV por mês</h3><p class="sub">Materiais, pessoal, gastos gerais e importação (conforme as contas do plano)</p></div>
+              <div class="legend" id="lgCmv"></div></div>
+            <div class="chart" id="chCmv"></div>
+          </div>
+          <div class="card notes"><h3>Pontos de leitura</h3><ul id="notesCus"></ul></div>
+        </div>
+        <div class="row r-2e" id="rowEst">
+          <div class="card">
+            <div class="card-h"><div><h3>Estoques ao fim de cada mês</h3><p class="sub">Matéria-prima e produto acabado</p></div>
+              <div class="legend" id="lgEst"></div></div>
+            <div class="chart sm" id="chEst"></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h3>Compras × consumo de materiais</h3><p class="sub">A diferença entre as barras é a variação do estoque no mês</p></div>
+              <div class="legend"><span><i class="bg3"></i>Compras</span><span><i class="bg1"></i>Consumo</span></div></div>
+            <div class="chart sm" id="chCompra"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><div><h3>Principais contas de custo</h3><p class="sub">Lançamentos acumulados no grupo de custos, sem as contas de estoque e de créditos de impostos</p></div></div>
+          <div class="hb" id="hbCus"></div>
+        </div>
+      </section>
+
+      <!-- 5 DESPESAS -->
+      <section class="view" id="view-despesas" data-title="Despesas e fornecedores" hidden>
+        <div class="row r-4" id="kDes"></div>
+        <div class="row r-2">
+          <div class="card">
+            <div class="card-h"><div><h3>Despesas operacionais por mês</h3><p class="sub">Administrativas, comerciais, financeiras e outras</p></div>
+              <div class="legend"><span><i class="bg1"></i>Administrativas</span><span><i class="bg3"></i>Comerciais</span><span><i class="bg4"></i>Financeiras</span><span><i class="bg5"></i>Outras</span></div></div>
+            <div class="chart" id="chDes"></div>
+          </div>
+          <div class="card notes"><h3>Pontos de leitura</h3><ul id="notesDes"></ul></div>
+        </div>
+        <div class="row r-2e">
+          <div class="card">
+            <div class="card-h"><div><h3>Maiores despesas administrativas</h3><p class="sub">Acumulado por conta · clique para ver os lançamentos</p></div></div>
+            <div class="hb" id="hbAdm"></div>
+          </div>
+          <div class="card">
+            <div class="card-h"><div><h3>Despesas comerciais por conta</h3><p class="sub">Acumulado por conta · clique para ver os lançamentos</p></div></div>
+            <div class="hb" id="hbCom"></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card">
+            <div class="card-h"><div><h3>Maiores fornecedores</h3><p class="sub">25 maiores gastos do período, com a conta de lançamento</p></div>
+              <input class="search" id="fornSearch" type="search" placeholder="Buscar fornecedor" aria-label="Buscar fornecedor" style="margin-left:auto;max-width:220px"></div>
+            <div class="tw short"><table id="fornTbl"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 VARIAÇÃO -->
+      <section class="view" id="view-variacao" data-title="Variação por conta" hidden>
+        <div class="card" id="varDetail">
+          <div class="card-h"><div><p class="lbl" id="vdGroup"></p><h3 id="vdTitle" style="font-size:19px"></h3><p class="sub" id="vdCode"></p></div>
+            <div class="legend"><span><i class="bg1"></i>Valor do mês</span><span><i class="bgacc"></i>Mês fora da faixa</span><span><i class="ln bgacc"></i>Mediana</span></div></div>
+          <div class="strip" id="vdStrip"></div>
+          <div class="chart sm" id="chVar"></div>
+          <div><button class="btn" id="vdOpen" type="button">Ver lançamentos desta conta</button></div>
+        </div>
+        <div class="tools">
+          <div id="varChips" class="tools"></div>
+          <select class="sel" id="varGroup" aria-label="Grupo"></select>
+          <select class="sel" id="varSort" aria-label="Ordenar"><option value="v">Ordenar por valor</option><option value="cv">Ordenar por variação</option></select>
+          <input class="search" id="varSearch" type="search" placeholder="Buscar conta" aria-label="Buscar conta">
+        </div>
+        <div class="tw"><table id="varTbl"></table></div>
+        <p class="foot" id="varFoot"></p>
+      </section>
+    </main>
+  </div>
+</div>
+<div id="tip" hidden></div>
+<div class="dr-back" id="drBack" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle" hidden>
+  <div class="dr-h carbon"><div><p class="lbl" id="drGroup"></p><h3 id="drTitle"></h3><p class="sub" id="drCode"></p></div>
+    <button class="iconbtn" id="drClose" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="dr-tools">
+    <div class="tools" id="drMonths"></div>
+    <div class="tools">
+      <div class="seg" id="drView" role="group" aria-label="Visualização"><button type="button" data-v="l" aria-pressed="true">Lançamentos</button><button type="button" data-v="f" aria-pressed="false" id="drViewF">Por fornecedor</button></div>
+      <select class="sel" id="drSort" aria-label="Ordenar"><option value="d">Ordenar por data</option><option value="v">Ordenar por valor</option></select>
+      <input class="search" id="drSearch" type="search" placeholder="Buscar histórico, fornecedor ou documento" aria-label="Buscar lançamentos">
+    </div>
+  </div>
+  <div class="dr-body">
+    <div class="strip" id="drSum"></div>
+    <div class="tw"><table class="dt" id="drTbl"></table></div>
+    <div class="tools"><button class="btn" id="drMore" type="button" hidden>Mostrar mais</button><span class="foot" id="drFoot"></span></div>
+  </div>
+</aside>
+
+<script>const META={"empresa":"E-CONTAFACIL LTDA","cnpj":"47.067.622/0001-09","ano":2026,"meses":9};const DATA={"meses":["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set"],"serie":{"receita_bruta":[0,0,0,0,0,0,0,0,0],"deducoes":[0,0,0,0,0,0,0,0,0],"receita_liquida":[0,0,0,0,0,0,0,0,0],"cmv":[67391.15,91805.54,89567.08,60226.36,0,0,0,23055.58,12992.94],"resultado_operacional":[-67391.15,-91805.54,-89567.08,-60226.36,0,0,0,-23055.58,-12992.94],"desp_adm":[0,0,0,0,0,0,0,0,0],"desp_coml":[0,0,0,0,0,0,0,0,0],"desp_fin":[0,0,0,0,0,0,0,0,0],"outras_desp":[0,0,0,0,0,0,0,0,0],"rec_fin":[0,0,0,0,0,0,0,0,0],"ir_csll":[0,0,0,0,0,0,0,0,0],"lucro":[-67391.15,-91805.54,-89567.08,-60226.36,0,0,0,-23055.58,-12992.94],"materiais":[0,0,0,0,0,0,0,0,0],"pessoal_producao":[0,0,0,0,0,0,0,0,0],"gerais_fabricacao":[67391.15,91805.54,89567.08,60226.36,0,0,0,23055.58,12992.94],"importacao":[0,0,0,0,0,0,0,0,0],"variacao_estoque":[0,0,0,0,0,0,0,0,0],"compras_materiais":[0,0,0,0,0,0,0,0,0],"mp_ef":[0,0,0,0,0,0,0,0,0],"pa_ef":[0,0,0,0,0,0,0,0,0],"mp_ei":[0,0,0,0,0,0,0,0,0],"pa_ei":[0,0,0,0,0,0,0,0,0]},"tri":[],"dre":[["RECEITAS VENDAS DE MERCADORIAS E PRODUTOS E SERVIÇOS","","g",[0,0,0,0,0,0,0,0,0]],["(-) DEVOLUÇÕES/CANCELAMENTOS/IMPOSTOS","","g",[0,0,0,0,0,0,0,0,0]],["RECEITA LIQUIDA","","t",[0,0,0,0,0,0,0,0,0]],["CUSTOS DAS MERCADORIAS/PRODUTOS VENDIDOS","","g",[-67391.15,-91805.54,-89567.08,-60226.36,0,0,0,-23055.58,-12992.94]],["CUSTOS INFORMATICA / INFRA-ESTRUTURA","4.1.6.01.000001","c",[-7109.44,-16075.98,-10493.92,-2790.89,0,0,0,-135.59,0]],["CUSTOS DOS SERVIÇOS PRESTADOS PJ","4.1.6.01.000002","c",[-16614.47,-18278.86,-15674.69,-3000,0,0,0,0,0]],["CUSTO SERVIÇOS DE CONTABILIDADE","4.1.6.01.000003","c",[-21169.9,-13000,-8000,-13000,0,0,0,0,0]],["CUSTO SERVIÇOS SOCIETÁRIOS","4.1.6.01.000004","c",[-500,0,0,0,0,0,0,0,0]],["CUSTO SERVIÇOS DE PESQUISA E DESENVOLVIMENTO","4.1.6.01.000005","c",[-13500,-13500,-11000,-11000,0,0,0,0,-11000]],["SALÁRIOS E ORDENADOS","4.2.1.01.000001","c",[-5000,-26000,-8000,-26000,0,0,0,-21000,0]],["HOSPEDAGEM","4.2.1.05.000003","c",[0,0,0,0,0,0,0,-92.99,0]],["REFEIÇÕES","4.2.1.05.000004","c",[0,-1080,-1200,-1200,0,0,0,-1200,0]],["SERVIÇOS PRESTADOS POR TERCEIROS","4.2.1.06.000006","c",[0,0,-2.46,0,0,0,0,0,-1418.05]],["DESPESAS COM MARKETING / PUBLICIDADE","4.2.1.06.000008","c",[-799,0,0,0,0,0,0,0,0]],["SALÁRIOS E ORDENADOS","4.2.2.01.000001","c",[0,0,-18000,0,0,0,0,0,0]],["VALE TRANSPORTE","4.2.2.01.000010","c",[-675.36,-1273.72,-1738.96,-1254,0,0,0,-627,0]],["DESPESAS COM ALIMENTAÇÃO","4.2.2.01.000012","c",[-1200,-1080,-1200,-1200,0,0,0,0,0]],["ASSISTÊNCIA CONTÁBIL","4.2.2.04.000008","c",[-471,-471,-471,-471,0,0,0,0,0]],["SERVIÇOS PRESTADOS POR TERCEIROS","4.2.2.04.000009","c",[0,0,-12781.4,0,0,0,0,0,0]],["DESPESAS GERAIS","4.2.2.04.000013","c",[-37.94,-736.98,-239.36,0,0,0,0,0,0]],["ASSISTENCIA FINANCEIRA","4.2.2.04.000018","c",[-314.04,-309,-309,-310.47,0,0,0,0,-574.89]],["TARIFA BANCÁRIA","4.2.2.05.000011","c",[0,0,-456.29,0,0,0,0,0,0]],["RESULTADO OPERACIONAL","","t",[-67391.15,-91805.54,-89567.08,-60226.36,0,0,0,-23055.58,-12992.94]],["DESPESAS ADMINISTRATIVAS","","g",[0,0,0,0,0,0,0,0,0]],["DESPESAS COMERCIAIS","","g",[0,0,0,0,0,0,0,0,0]],["DESPESAS FINANCEIRAS","","g",[0,0,0,0,0,0,0,0,0]],["OUTRAS DESPESAS","","g",[0,0,0,0,0,0,0,0,0]],["RECEITAS FINANCEIRAS","","g",[0,0,0,0,0,0,0,0,0]],["LUCRO/PREJUÍZO:","","t",[-67391.15,-91805.54,-89567.08,-60226.36,0,0,0,-23055.58,-12992.94]]],"cv":[["4.1.6.01.000001","CUSTOS INFORMATICA / INFRA-ESTRUTURA",1.3665,[1,2,3,4,5,6,7,9],"Variação alta"],["4.1.6.01.000002","CUSTOS DOS SERVIÇOS PRESTADOS PJ",1.3086,[],"Variação alta"],["4.1.6.01.000003","CUSTO SERVIÇOS DE CONTABILIDADE",1.2304,[],"Variação alta"],["4.1.6.01.000005","CUSTO SERVIÇOS DE PESQUISA E DESENVOLVIMENTO",0.9048,[5,6,7,8],"Variação alta"],["4.2.1.01.000001","SALÁRIOS E ORDENADOS",1.1359,[2,3,4,5,6,7,8,9],"Variação alta"]],"forn":[["MAR O 2026","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",22000],["FEVEREIRO 2026","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",13500],["JANEIRO 2026","CUSTO SERVIÇOS DE CONTABILIDADE","Outros",11281.4],["JANEIRO 2025","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",11000],["SISTEMA AUTOMA O DE VENDAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",8400],["PRESTA O DE SERVI O","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",2500],["SISTEMA CONT BIL","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",1884],["REEMBOLSO DE DESPESAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",1473.96],["PINBANK BRASIL INSTITUI O DE","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",1334.24],["DESENVOLVEDORES DE SOFTWARE PAGAMENTO DE CONTA","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",1287.64],["PAGAMENTO CART O DE CR DITO","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",1176],["CART O DE CR DITO PAGAMENTO CART O DE CR DITO","CUSTOS DOS SERVIÇOS PRESTADOS PJ","Outros",1176],["CART O DE CR DITOPAGAMENTO CART O DE CR DITO","SERVIÇOS PRESTADOS POR TERCEIROS","Outros",1176],["DESENVOLVEDOR DE SISTEMAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",970.69],["PAGAMENTO DE CONTA ASAAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",854],["DESENVOLVEDORES DE SOFTWARE","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",645.29],["PAGAMENTO DE CONTA BANCO SANTANDER BRASIL","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",630.96],["JANEIRO 2026 JUNIOR","DESPESAS COM ALIMENTAÇÃO","Outros",600],["ATENDIMENTO PAGAMENTO DE CONTA ASAAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",427],["ATENDIMENTOPAGAMENTO DE CONTA ASAAS","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",427],["DESENVOLVEDOR DE SISTEMAS PAGAMENTO DE CONTA B","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",362.41],["DESENVOLVEDOR DE SISTEMASPAGAMENTO DE CONTA BA","TARIFA BANCÁRIA","Outros",362.41],["SISTEMA DE GEST O","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",309],["CONTA A PAGAR CRIADA AUTOMATICAMENTE PELA OMIE","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",309],["HOSPEDAGEM","CUSTOS INFORMATICA / INFRA-ESTRUTURA","Outros",278.97]],"cli":[]};const ENT={"a":["","4.1.6.01.000001","4.1.6.01.000002","4.1.6.01.000003","4.1.6.01.000004","4.1.6.01.000005","4.2.1.01.000001","4.2.1.05.000003","4.2.1.05.000004","4.2.1.06.000006","4.2.1.06.000008","4.2.2.01.000001","4.2.2.01.000010","4.2.2.01.000012","4.2.2.04.000008","4.2.2.04.000009","4.2.2.04.000013","4.2.2.04.000018","4.2.2.05.000011"],"f":["(Folha e provisões)","ATENDIMENTO PAGAMENTO DE CONTA ASAAS","ATENDIMENTOPAGAMENTO DE CONTA ASAAS","CANCELAMENTO DE PIX RECEBIDO","CART O DE CR DITO","CART O DE CR DITO PAGAMENTO CART O DE CR DITO","CART O DE CR DITOPAGAMENTO CART O DE CR DITO","CONTA A PAGAR CRIADA AUTOMATICAMENTE PELA OMIE","DESENVOLVEDOR DE SISTEMAS","DESENVOLVEDOR DE SISTEMAS PAGAMENTO DE CONTA B","DESENVOLVEDOR DE SISTEMASPAGAMENTO DE CONTA BA","DESENVOLVEDORES DE SOFTWARE","DESENVOLVEDORES DE SOFTWARE PAGAMENTO DE CONTA","FEVEREIRO 2026","HOSPEDAGEM","JANEIRO 2025","JANEIRO 2026","JANEIRO 2026 JUNIOR","MAR O 2026","PAGAMENTO CART O DE CR DITO","PAGAMENTO COM C DIGO QR PIX CANCELADO GABRIELA","PAGAMENTO DE CONTA ASAAS","PAGAMENTO DE CONTA BANCO SANTANDER BRASIL","PAGAMENTO LOCAWEB","PAGAMENTO TWILIO SENDGRID","PINBANK BRASIL INSTITUI O DE","PRESTA O DE SERVI O","REEMBOLSO DE DESPESAS","REEMBOLSO LINKEDIN","SISTEMA AUTOMA O DE VENDAS","SISTEMA CONT BIL","SISTEMA DE GEST O","SITE PAGAMENTO WPWORDPRESS Q5BDRT8UT","TWILIO SENDGRID"],"r":[[1,1,1,"",14,"VALOR REFERENTE Despesas com Software ou Sistemas - LOCAWEB - Hospedagem",-92.99,1],[1,1,5,"",30,"VALOR REFERENTE Despesas com Software ou Sistemas - ONEFLOW S.A. - Sistema ContÃ¡bil",-471,1],[1,1,8,"",0,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA -",-135.59,1],[1,1,15,"",31,"VALOR REFERENTE Despesas com Software ou Sistemas - OMIEXPERIENCE LTDA. - Sistema de GestÃ£o",-309,1],[1,1,20,"",0,"CONF. NOTA FISCALNF*8424*SPRINTHUB LTDA",-799,1],[1,1,20,"",11,"VALOR REFERENTE Sistema Operacional - TECNOSPEED - Desenvolvedores de software",-645.29,1],[1,1,20,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - COMHUB - HUB DE COMUNICACAO INTEGRADA LTDA -",-397,1],[1,1,20,"",8,"VALOR REFERENTE Sistema Operacional - SERPRO - Desenvolvedor de Sistemas",-283.57,1],[1,1,22,"",29,"VALOR REFERENTE Despesas com Software ou Sistemas - INBOTIX - Sistema automaÃ§Ã£o de vendas",-2800,1],[1,1,31,"",0,"CONF. NOTA FISCALNF*16330169*GOOGLE CLOUD BRASIL COMPUTACAO E SERVIÇOS DE DADOS LTDA",-1176,1],[1,2,1,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - LOCAWEB -",-92.99,1],[1,2,1,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - LWSA S/A -",-92.99,1],[1,2,5,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - ONEFLOW S.A. -",-471,1],[1,2,5,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - ONEFLOW S.A. -",-471,1],[1,2,6,"",0,"VALOR REFERENTE Custos com Comercial - LARICE CORREIA ALVES - PrestaÃ§Ã£o de ServiÃ§o - fevereiro/2026",-3717.92,1],[1,2,8,"",0,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA -",-135.59,1],[1,2,8,"",0,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA -",-135.59,1],[1,2,11,"",0,"VALOR REFERENTE Sistema Operacional - TECNOSPEED -",-643.4,1],[1,2,11,"",0,"VALOR REFERENTE Sistema Operacional - TECNOSPEED S/A -",-643.4,1],[1,2,18,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - OMIEXPERIENCE LTDA. -",-309,1],[1,2,18,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - OMIEXPERIENCE LTDA. -",-309,1],[1,2,24,"",29,"VALOR REFERENTE Despesas com Software ou Sistemas - INBOTIX - Sistema automaÃ§Ã£o de vendas",-2800,1],[1,2,24,"",21,"VALOR REFERENTE Despesas com Software ou Sistemas - COMHUB - HUB DE COMUNICACAO INTEGRADA LTDA - Pagamento de conta Asaas",-427,1],[1,2,24,"",29,"VALOR REFERENTE Despesas com Software ou Sistemas - INBOTIX ATENDIMENTO E VENDA LTDA - Sistema automaÃ§Ã£o de vendas",-2800,1],[1,2,24,"",27,"VALOR REFERENTE Reembolso de Despesas - LUIZ OCTAVIO FORTES PEGORARO - Reembolso de Despesas",-736.98,1],[1,2,24,"",21,"VALOR REFERENTE Despesas com Software ou Sistemas - COMHUB - HUB DE COMUNICACAO INTEGRADA LTDA - Pagamento de conta Asaas",-427,1],[1,2,26,"",8,"VALOR REFERENTE Sistema Operacional - SERPRO - Desenvolvedor de sistemas",-343.56,1],[1,2,26,"",8,"VALOR REFERENTE Sistema Operacional - ServiÃ§o Federal de Processamento de Dados (SERPRO) - Desenvolvedor de sistemas",-343.56,1],[1,2,28,"",0,"AQUISICAO CONFORME NOTA FISCALNF*16444337*GOOGLE CLOUD BRASIL COMPUTACAO E SERVIÇOS DE DADOS LTDA",-1176,1],[1,3,1,"",23,"VALOR REFERENTE Despesas com Software ou Sistemas - LOCAWEB - Pagamento Locaweb",-92.99,1],[1,3,1,"",23,"VALOR REFERENTE Despesas com Software ou Sistemas - - Pagamento Locaweb",-92.99,1],[1,3,3,"",30,"VALOR REFERENTE Despesas com Software ou Sistemas - ONEFLOW S.A. - Sistema ContÃ¡bil",-471,1],[1,3,3,"",30,"VALOR REFERENTE Despesas com Software ou Sistemas - - Sistema ContÃ¡bil",-471,1],[1,3,6,"",0,"VALOR REFERENTE Custos com Comercial - - PrestaÃ§Ã£o de ServiÃ§o - marÃ§o/2026",-3580.5,1],[1,3,8,"",32,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA - Site Pagamento Wpwordpress q5bdrt8ut",-135.59,1],[1,3,8,"",32,"VALOR REFERENTE Sistema Operacional - - Site Pagamento Wpwordpress q5bdrt8ut",-135.59,1],[1,3,13,"",12,"VALOR REFERENTE Sistema Operacional - TECNOSPEED - Desenvolvedores de software Pagamento de conta Banco do Brasil SA",-643.82,1],[1,3,13,"",25,"VALOR REFERENTE Sistema Operacional - INFE INFORMACOES TRIBUTARIAS EMPRESARIAIS LTDA - ME - PINBANK BRASIL INSTITUIÃ‡ÃƒO DE",-667.12,1],[1,3,13,"",12,"VALOR REFERENTE Sistema Operacional - - Desenvolvedores de software Pagamento de conta Banco do Brasil SA",-643.82,1],[1,3,13,"",25,"VALOR REFERENTE Sistema Operacional - - PINBANK BRASIL INSTITUIÃ‡ÃƒO DE",-667.12,1],[1,3,20,"",22,"VALOR REFERENTE Despesas com Software ou Sistemas - OMIEXPERIENCE LTDA. - Pagamento de conta Banco Santander Brasil S A",-315.48,1],[1,3,20,"",22,"VALOR REFERENTE Despesas com Software ou Sistemas - - Pagamento de conta Banco Santander Brasil S A",-315.48,1],[1,3,25,"",1,"VALOR REFERENTE Despesas com Software ou Sistemas - COMHUB - HUB DE COMUNICACAO INTEGRADA LTDA - WhatsApp Business - Atendimento Pagamento de conta As",-427,1],[1,3,25,"",2,"VALOR REFERENTE Despesas com Software ou Sistemas - - WhatsApp Business - AtendimentoPagamento de conta Asaas",-427,1],[1,3,27,"",9,"VALOR REFERENTE Sistema Operacional - SERPRO - Desenvolvedor de sistemas Pagamento de conta Banco do Brasil SA",-362.41,1],[1,3,31,"",0,"AQUISICAO CONFORME NOTA FISCALNF*16891460*GOOGLE CLOUD BRASIL COMPUTACAO E SERVIÇOS DE DADOS LTDA",-1045.01,1],[1,4,1,"",14,"VALOR REFERENTE Despesas com Software ou Sistemas - LOCAWEB - Hospedagem",-92.99,1],[1,4,6,"",30,"VALOR REFERENTE Despesas com Software ou Sistemas - ONEFLOW S.A. - Sistema ContÃ¡bil",-471,1],[1,4,8,"",0,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA - Site",-135.59,1],[1,4,8,"",0,"VALOR REFERENTE Sistema Operacional - WORDPRESS SERVICOS DE IMPRENCA SC LTDA - Site",-135.59,1],[1,4,10,"",0,"VALOR REFERENTE Despesas com Software ou Sistemas - SEBRACOM EMPRESARIAL LTDA -",-495,1],[1,4,17,"",7,"VALOR REFERENTE Despesas com Software ou Sistemas - OMIEXPERIENCE LTDA. - Conta a pagar criada automaticamente pela Omiexperience. Referente a Assinat",-309,1],[1,4,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*17556551*GOOGLE CLOUD BRASIL COMPUTACAO E SERVIÇOS DE DADOS LTDA",-1151.72,1],[1,8,10,"",0,"VALOR REFERENTE Sistema Operacional - - Site",-135.59,1],[2,1,5,"",16,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - Janeiro/2026",-3000,1],[2,1,5,"",15,"VALOR REFERENTE Prestador de ServiÃ§o - VICTOR GABRIEL DALACORTE - PrestaÃ§Ã£o de ServiÃ§o - Janeiro/2025",-11000,1],[2,1,5,"",0,"VALOR REFERENTE Prestador de ServiÃ§o - TWILIO EXPANSION LLC -",-114.47,1],[2,1,7,"",26,"VALOR REFERENTE Prestador de ServiÃ§o - VICTOR GABRIEL DALACORTE - PrestaÃ§Ã£o de ServiÃ§o",-2500,1],[2,2,4,"",33,"VALOR REFERENTE Prestador de ServiÃ§o - TWILIO EXPANSION LLC - Twilio sendgrid",-107.86,1],[2,2,6,"",13,"VALOR REFERENTE Prestador de ServiÃ§o - VICTOR GABRIEL DALACORTE - PrestaÃ§Ã£o de ServiÃ§o - Fevereiro/2026",-13500,1],[2,2,6,"",0,"VALOR REFERENTE Prestador de ServiÃ§o - SEBRACOM EMPRESARIAL LTDA -",-495,1],[2,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - fevereiro/2026",-3000,1],[2,2,18,"",19,"VALOR REFERENTE Prestador de ServiÃ§o - MERCADO PAGO - Pagamento CartÃ£o de crÃ©dito",-1176,1],[2,3,3,"",0,"VALOR REFERENTE Prestador de ServiÃ§o - SEBRACOM EMPRESARIAL LTDA -",-495,1],[2,3,6,"",18,"VALOR REFERENTE Prestador de ServiÃ§o - VICTOR GABRIEL DALACORTE - PrestaÃ§Ã£o de ServiÃ§o - MarÃ§o/2026",-11000,1],[2,3,6,"",0,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - marÃ§o/2026",-3000,1],[2,3,13,"",5,"VALOR REFERENTE Prestador de ServiÃ§o - MERCADO PAGO - CartÃ£o de crÃ©dito Pagamento CartÃ£o de crÃ©dito",-1176,1],[2,3,19,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - MERCADO PAGO - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz Rezende Pagamento com cÃ³digo QR Pix canc",-1.23,1],[2,3,23,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - MERCADO PAGO - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz Rezende Pagamento com cÃ³digo QR Pix canc",-1.23,1],[2,3,24,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - MERCADO PAGO - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz Rezende Pagamento com cÃ³digo QR Pix canc",-1.23,1],[2,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - /2026",-3000,1],[3,1,5,"",16,"VALOR REFERENTE SalÃ¡rios - DBR CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - Janeiro/2026",-8000,1],[3,1,7,"",0,"VALOR REFERENTE SalÃ¡rios - LUIZ OCTAVIO FORTES PEGORARO - Consultoria Financeira - dezembro/2025",-5000,1],[3,1,13,"",0,"AQUISICAO CONFORME NOTA FISCALNF*32*DEBORA BERGAMO DA ROSA CONTABILIDADE",-8000,1],[3,1,29,"",0,"VALOR REFERENTE Contabilidade - MERCADO PAGO -",-169.9,1],[3,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - DBR CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - fevereiro/2026",-8000,1],[3,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - LUIZ OCTAVIO FORTES PEGORARO - Consultoria Financeira - fevereiro/2026",-5000,1],[3,3,9,"",0,"VALOR REFERENTE SalÃ¡rios - DBR CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - fevereiro/2026",-8000,1],[3,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - LUIZ OCTAVIO FORTES PEGORARO - Consultoria Financeira - /2026",-5000,1],[3,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - DBR CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - /2026",-8000,1],[4,1,12,"",0,"CONF. NOTA FISCALNF*152*TORTORETTO SERVICOS EMPRESARIAIS LTDA",-250,1],[4,1,16,"",0,"CONF. NOTA FISCALNF*153*TORTORETTO SERVICOS EMPRESARIAIS LTDA",-250,1],[5,1,5,"",0,"AQUISICAO CONFORME NOTA FISCALNF*15*50.601.484 VICTOR GABRIEL DALACORTE",-13500,1],[5,2,2,"",0,"AQUISICAO CONFORME NOTA FISCALNF*16*50.601.484 VICTOR GABRIEL DALACORTE",-13500,1],[5,3,3,"",0,"AQUISICAO CONFORME NOTA FISCALNF*17*50.601.484 VICTOR GABRIEL DALACORTE",-11000,1],[5,4,1,"",0,"AQUISICAO CONFORME NOTA FISCALNF*18*50.601.484 VICTOR GABRIEL DALACORTE",-11000,1],[5,9,3,"",0,"AQUISICAO CONFORME NOTA FISCALNF*23*50.601.484 VICTOR GABRIEL DALACORTE",-11000,1],[6,1,5,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - dezembro/2025",-5000,1],[6,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - fevereiro/2026",-5000,1],[6,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - DEBORA BERGAMO DA ROSA CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - fevereiro/2026",-8000,1],[6,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - LUIZ OCTAVIO FORTES PEGORARO - Consultoria Financeira - fevereiro/2026",-5000,1],[6,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - fevereiro/2026",-5000,1],[6,2,6,"",0,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - fevereiro/2026",-3000,1],[6,3,6,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de serviÃ§o - marÃ§o/2026",-3000,1],[6,3,9,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - fevereiro/2026",-5000,1],[6,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - /2026",-5000,1],[6,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - PrestaÃ§Ã£o de serviÃ§o - /2026",-3000,1],[6,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - THAUANE DA SILVA FRANCESQUINI - PrestaÃ§Ã£o de ServiÃ§o Financeiro - /2026",-5000,1],[6,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - LUIZ OCTAVIO FORTES PEGORARO - Consultoria Financeira - /2026",-5000,1],[6,4,5,"",0,"VALOR REFERENTE SalÃ¡rios - DEBORA BERGAMO DA ROSA CONTABILIDADE - PrestaÃ§Ã£o de ServiÃ§o - /2026",-8000,1],[6,8,5,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de serviÃ§o - /2026",-3000,1],[6,8,5,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de ServiÃ§o Financeiro - /2026",-5000,1],[6,8,5,"",0,"VALOR REFERENTE SalÃ¡rios - - Consultoria Financeira - /2026",-5000,1],[6,8,5,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de ServiÃ§o - /2026",-8000,1],[7,8,1,"",14,"VALOR REFERENTE Despesas com Software ou Sistemas - - Hospedagem",-92.99,1],[8,2,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - fevereiro/2026",-540,1],[8,2,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - fevereiro/2026",-540,1],[8,3,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - - Vale RefeiÃ§Ã£o - marÃ§o/2026",-540,1],[8,3,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - - Vale RefeiÃ§Ã£o - marÃ§o/2026",-660,1],[8,4,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - /2026",-600,1],[8,4,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - /2026",-600,1],[8,8,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - - Vale RefeiÃ§Ã£o - /2026",-600,1],[8,8,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - - Vale RefeiÃ§Ã£o - /2026",-600,1],[9,3,23,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz RezendePagamento com cÃ³digo QR Pix cancelado Gabriela",-1.23,1],[9,3,24,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz RezendePagamento com cÃ³digo QR Pix cancelado Gabriela",-1.23,1],[9,9,16,"",0,"AQUISICAO CONFORME NOTA FISCALNF*628*MAESTRO ADMINISTRACAO DE IMOVEIS LTDA",-108.75,1],[9,9,23,"",0,"AQUISICAO CONFORME NOTA FISCALNF*4394962*VB-SERVICOS COMERCIO E ADMINISTRACAO LTDA",-104.28,1],[9,9,23,"",0,"AQUISICAO CONFORME NOTA FISCALNF*4395843*VB-SERVICOS COMERCIO E ADMINISTRACAO LTDA",-96.24,1],[9,9,25,"",0,"AQUISICAO CONFORME NOTA FISCALNF*4404457*VB-SERVICOS COMERCIO E ADMINISTRACAO LTDA",-60.15,1],[9,9,28,"",0,"AQUISICAO CONFORME NOTA FISCALNF*4407876*VB-SERVICOS COMERCIO E ADMINISTRACAO LTDA",-24.06,1],[9,9,28,"",0,"AQUISICAO CONFORME NOTA FISCALNF*4407878*VB-SERVICOS COMERCIO E ADMINISTRACAO LTDA",-12.03,1],[9,9,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*38970574*GOOGLE BRASIL INTERNET LTDA.",-1012.54,1],[10,1,20,"",0,"VALOR REFERENTE Custos com Marketing - ASAAS GESTAO FINANCEIRA INSTITUICAO DE PAGAMENTO S.A -",-799,1],[11,3,9,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de ServiÃ§o - fevereiro/2026",-8000,1],[11,3,9,"",0,"VALOR REFERENTE SalÃ¡rios - - Consultoria Financeira - fevereiro/2026",-5000,1],[11,3,9,"",0,"VALOR REFERENTE SalÃ¡rios - - PrestaÃ§Ã£o de ServiÃ§o Financeiro - fevereiro/2026",-5000,1],[12,1,6,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - janeiro/2026",-393.96,1],[12,1,7,"",16,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - Janeiro/2026",-281.4,1],[12,2,6,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - fevereiro/2026",-265.46,1],[12,2,6,"",0,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - fevereiro/2026",-371.4,1],[12,2,6,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - fevereiro/2026",-265.46,1],[12,2,6,"",0,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - fevereiro/2026",-371.4,1],[12,3,6,"",0,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - marÃ§o/2026",-371.4,1],[12,3,6,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - marÃ§o/2026",-498.08,1],[12,3,6,"",0,"VALOR REFERENTE Vale Transporte - - Ajuda de Custo - marÃ§o/2026",-371.4,1],[12,3,6,"",0,"VALOR REFERENTE Vale Transporte - - Ajuda de Custo - marÃ§o/2026",-498.08,1],[12,4,2,"",0,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - /2026",-267,1],[12,4,2,"",0,"VALOR REFERENTE Vale Transporte - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Ajuda de Custo - /2026",-267,1],[12,4,5,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - /2026",-360,1],[12,4,5,"",0,"VALOR REFERENTE Vale Transporte - LARICE CORREIA ALVES - Ajuda de Custo - /2026",-360,1],[12,8,2,"",0,"VALOR REFERENTE Vale Transporte - - Ajuda de Custo - /2026",-267,1],[12,8,5,"",0,"VALOR REFERENTE Vale Transporte - - Ajuda de Custo - /2026",-360,1],[13,1,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - janeiro/2026",-600,1],[13,1,5,"",17,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - Janeiro/2026 Junior",-600,1],[13,2,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - fevereiro/2026",-540,1],[13,2,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - fevereiro/2026",-540,1],[13,3,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - marÃ§o/2026",-540,1],[13,3,6,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - marÃ§o/2026",-660,1],[13,4,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - CLAUDINO DOS SANTOS ALMEIDA JUNIOR - Vale RefeiÃ§Ã£o - /2026",-600,1],[13,4,5,"",0,"VALOR REFERENTE Vale RefeiÃ§Ã£o - LARICE CORREIA ALVES - Vale RefeiÃ§Ã£o - /2026",-600,1],[14,1,31,"",0,"CONF. NOTA FISCALNF*47693*ONEFLOW S.A",-471,1],[14,2,28,"",0,"AQUISICAO CONFORME NOTA FISCALNF*49402*ONEFLOW S.A",-471,1],[14,3,31,"",0,"AQUISICAO CONFORME NOTA FISCALNF*51402*ONEFLOW S.A",-471,1],[14,4,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*53246*ONEFLOW S.A",-471,1],[15,3,3,"",0,"VALOR REFERENTE Prestador de ServiÃ§o - -",-495,1],[15,3,4,"",24,"VALOR REFERENTE Prestador de ServiÃ§o - - Pagamento Twilio sendgrid",-109.17,1],[15,3,6,"",18,"VALOR REFERENTE Prestador de ServiÃ§o - - PrestaÃ§Ã£o de ServiÃ§o - MarÃ§o/2026",-11000,1],[15,3,13,"",6,"VALOR REFERENTE Prestador de ServiÃ§o - - CartÃ£o de crÃ©ditoPagamento CartÃ£o de crÃ©dito",-1176,1],[15,3,19,"",20,"VALOR REFERENTE Prestador de ServiÃ§o - - Pagamento com cÃ³digo QR Pix cancelado Gabriela Muniz Rezende Pagamento com cÃ³digo QR Pix cancelado Gabriel",-1.23,1],[16,1,12,"",4,"VALOR REFERENTE CartÃ£o de CrÃ©dito - MERCADO PAGO - CartÃ£o de crÃ©dito",-37.94,1],[16,2,24,"",27,"VALOR REFERENTE Reembolso de Despesas - LUIZ OCTAVIO FORTES PEGORARO - Reembolso de Despesas",-736.98,1],[16,3,6,"",28,"VALOR REFERENTE Reembolso de Despesas - LARICE CORREIA ALVES - Reembolso Linkedin",-119.68,1],[16,3,6,"",28,"VALOR REFERENTE Reembolso de Despesas - - Reembolso Linkedin",-119.68,1],[17,1,15,"",0,"CONF. NOTA FISCALNF*3334666*OMIEXPERIENCE LTDA.",-309,1],[17,1,31,"",0,"CONF. NOTA FISCALNF*64037874*PAGAR.ME S.A.",-3.06,1],[17,1,31,"",0,"CONF. NOTA FISCALNF*64044640*PAGAR.ME S.A.",-1.98,1],[17,2,15,"",0,"AQUISICAO CONFORME NOTA FISCALNF*3413665*OMIEXPERIENCE LTDA.",-309,1],[17,3,15,"",0,"AQUISICAO CONFORME NOTA FISCALNF*3498166*OMIEXPERIENCE LTDA.",-309,1],[17,4,15,"",0,"AQUISICAO CONFORME NOTA FISCALNF*3580844*OMIEXPERIENCE LTDA.",-309,1],[17,4,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*64180727*PAGAR.ME S.A.",-0.99,1],[17,4,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*64206294*PAGAR.ME S.A.",-0.48,1],[17,9,15,"",0,"AQUISICAO CONFORME NOTA FISCALNF*3994369*OMIEXPERIENCE LTDA.",-569,1],[17,9,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*64418960*PAGAR.ME S.A.",-3.91,1],[17,9,30,"",0,"AQUISICAO CONFORME NOTA FISCALNF*64427086*PAGAR.ME S.A.",-1.98,1],[18,3,24,"",3,"VALOR REFERENTE Tarifas BancÃ¡rias - - Cancelamento de Pix recebido",-46.94,1],[18,3,24,"",3,"VALOR REFERENTE Tarifas BancÃ¡rias - - Cancelamento de Pix recebido",-46.94,1],[18,3,27,"",10,"VALOR REFERENTE Sistema Operacional - - Desenvolvedor de sistemasPagamento de conta Banco do Brasil SA",-362.41,1]]};</script>
+<script>
+(function(){
+const D=DATA, M=D.meses, S=D.serie, N=M.length, YEAR=META.ano;
+const MF=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'].slice(0,N);
+const NQ=Math.ceil(N/3), ALLM=[...Array(N).keys()];
+const qRange=k=>[k*3,Math.min(N,k*3+3)];
+document.title='Acompanhamento Contábil · '+META.empresa;
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const nf0=new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0});
+const nf1=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1});
+const nf2=new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const sum=a=>a.reduce((x,y)=>x+y,0);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function brl(v){const a=Math.abs(v),s=v<0?'−':'';if(a>=1e6)return s+'R$ '+nf1.format(a/1e6)+' mi';if(a>=1e3)return s+'R$ '+nf1.format(a/1e3)+' mil';return s+'R$ '+nf0.format(a)}
+function brlL(v){const a=Math.abs(v),s=v<0?'−':'';if(a>=1e6)return s+'R$ '+nf1.format(a/1e6)+' milhões';return brl(v)}
+function ax(v){const a=Math.abs(v),s=v<0?'−':'';if(a>=1e6){const x=a/1e6;return s+(Math.abs(x-Math.round(x))<1e-9?nf0.format(x):nf1.format(x))+' mi'}if(a>=1e3)return s+nf0.format(a/1e3)+' mil';return s+nf0.format(a)}
+function full(v){if(Math.abs(v)<0.5)return '–';const t=nf0.format(Math.abs(v));return v<0?'('+t+')':t}
+function money(v){return (v<0?'−':'')+'R$ '+nf2.format(Math.abs(v))}
+function pct(v,d=1){if(!isFinite(v))return '–';const s=(Math.abs(v)*100).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});return (v<0&&/[1-9]/.test(s)?'−':'')+s+'%'}
+const T={};for(const k in S)T[k]=sum(S[k]);
+const sdv=(a,b)=>b?a/b:0;
+const mb=S.resultado_operacional.map((v,i)=>sdv(v,S.receita_liquida[i]));
+const ml=S.lucro.map((v,i)=>sdv(v,S.receita_liquida[i]));
+const rowBy=code=>D.dre.find(r=>r[1]===code);
+const rowName=n=>D.dre.find(r=>r[0]===n);
+const argmax=a=>a.indexOf(Math.max(...a)), argmin=a=>a.indexOf(Math.min(...a));
+
+/* group structure of the DRE */
+const groupOf={};let gname='';D.dre.forEach(r=>{if(r[2]==='g')gname=r[0];else if(r[2]==='c'&&r[1])groupOf[r[1]]=gname});
+const GSHORT={'RECEITAS VENDAS DE MERCADORIAS E PRODUTOS E SERVIÇOS':'Receita','(-) DEVOLUÇÕES/CANCELAMENTOS/IMPOSTOS':'Deduções','CUSTOS DAS MERCADORIAS/PRODUTOS VENDIDOS':'Custos','DESPESAS ADMINISTRATIVAS':'Administrativas','DESPESAS COMERCIAIS':'Comerciais','DESPESAS FINANCEIRAS':'Financeiras','OUTRAS DESPESAS':'Outras despesas','RECEITAS FINANCEIRAS':'Receitas financeiras','CUSTOS SERVIÇOS':'Custos','RECEITAS DIVERSAS':'Receitas diversas','PROVISÃO P/ IRPJ E CSLL':'IRPJ e CSLL'};
+const gs=c=>GSHORT[groupOf[c]]||'';
+
+/* ---------- tooltip ---------- */
+const tip=$('#tip');
+function showTip(e,html){tip.innerHTML=html;tip.hidden=false;const w=tip.offsetWidth,h=tip.offsetHeight;let x=e.clientX+16,y=e.clientY+14;if(x+w>innerWidth-8)x=e.clientX-w-16;if(y+h>innerHeight-8)y=innerHeight-h-8;if(x<8)x=8;tip.style.left=x+'px';tip.style.top=y+'px'}
+function hideTip(){tip.hidden=true}
+const tr=(c,l,v)=>`<div class="tr"><span>${c?`<i class="${c}"></i>`:''}${l}</span><span>${v}</span></div>`;
+
+/* ---------- chart helpers ---------- */
+function ticks(min,max,n=5){if(min===max){max=min+1}const step0=(max-min)/n,mag=Math.pow(10,Math.floor(Math.log10(step0))),e=step0/mag;const step=(e>=7.5?10:e>=3.5?5:e>=1.5?2:1)*mag;const lo=Math.floor(min/step+1e-9)*step,hi=Math.ceil(max/step-1e-9)*step;const out=[];for(let v=lo;v<=hi+step/2;v+=step)out.push(+v.toFixed(10));return out}
+function bindHits(el,tipFn){$$('.col',el).forEach(g=>{const i=+g.dataset.i;const on=e=>{$$('.col.on',el).forEach(x=>x.classList.remove('on'));g.classList.add('on');showTip(e,tipFn(i))};g.addEventListener('mousemove',on);g.addEventListener('click',on);g.addEventListener('mouseleave',()=>{g.classList.remove('on');hideTip()})})}
+/* bars: o={cats,series:[{values,cls}],stacked,line:{values,fmt},ref,flags,yfmt,tip,labels} */
+function bars(el,o){
+  const W=el.clientWidth||600,H=el.clientHeight||300,narrow=W<520;
+  const m={t:18,r:o.line?(narrow?40:48):10,b:28,l:narrow?44:54};
+  const iw=W-m.l-m.r,ih=H-m.t-m.b,n=o.cats.length;
+  let vals=[0];
+  if(o.stacked){for(let i=0;i<n;i++){let p=0,q=0;o.series.forEach(s=>{const v=s.values[i];if(v>=0)p+=v;else q+=v});vals.push(p,q)}}
+  else o.series.forEach(s=>vals.push(...s.values));
+  if(o.ref!=null)vals.push(o.ref);
+  const tk=ticks(Math.min(...vals),Math.max(...vals)),y0=tk[0],y1=tk[tk.length-1];
+  const y=v=>m.t+ih-(v-y0)/(y1-y0)*ih;
+  const band=iw/n,k=o.stacked?1:o.series.length;
+  const bw=Math.min(o.stacked?band*.58:band*.74/k,o.stacked?44:26);
+  let g='';
+  tk.forEach(t=>{g+=`<line class="grid" x1="${m.l}" x2="${m.l+iw}" y1="${y(t)}" y2="${y(t)}"/><text class="tick" x="${m.l-8}" y="${y(t)}" text-anchor="end" dominant-baseline="middle">${(o.yfmt||ax)(t)}</text>`});
+  g+=`<line class="zero" x1="${m.l}" x2="${m.l+iw}" y1="${y(0)}" y2="${y(0)}"/>`;
+  let ly=null,lt=null;
+  if(o.line){const lv=o.line.values;lt=ticks(Math.min(0,...lv),Math.max(...lv),4);const a=lt[0],b=lt[lt.length-1];ly=v=>m.t+ih-(v-a)/(b-a)*ih;
+    lt.forEach(t=>{g+=`<text class="tick" x="${m.l+iw+8}" y="${ly(t)}" dominant-baseline="middle">${o.line.fmt(t)}</text>`})}
+  for(let i=0;i<n;i++){
+    const cx=m.l+band*(i+.5);
+    g+=`<g class="col" data-i="${i}"><rect class="hl" x="${m.l+band*i}" y="${m.t}" width="${band}" height="${ih}"/>`;
+    if(o.stacked){let p=0,q=0;o.series.forEach(s=>{const v=s.values[i];if(Math.abs(v)<1e-9)return;let a,b;if(v>=0){a=p;b=p+v;p=b}else{a=q;b=q+v;q=b}
+        const yt=Math.min(y(a),y(b)),h=Math.abs(y(a)-y(b));g+=`<rect class="${s.cls}" x="${cx-bw/2}" y="${yt}" width="${bw}" height="${Math.max(h,0.5)}"/>`})}
+    else{o.series.forEach((s,j)=>{const v=s.values[i];const x=cx-(k*bw+(k-1)*3)/2+j*(bw+3);const yt=Math.min(y(0),y(v)),h=Math.abs(y(v)-y(0));
+        const cls=(o.flags&&o.flags.includes(i))?'facc':s.cls;g+=`<rect class="${cls}" x="${x}" y="${yt}" width="${bw}" height="${Math.max(h,0.5)}" rx="2"/>`;
+        if(o.labels&&!narrow)g+=`<text class="vl" x="${x+bw/2}" y="${v>=0?yt-5:yt+h+12}" text-anchor="middle">${o.labels(v)}</text>`})}
+    g+=`<text class="xl" x="${cx}" y="${H-8}" text-anchor="middle">${o.cats[i]}</text>`;
+    g+=`<rect class="hit" x="${m.l+band*i}" y="${m.t}" width="${band}" height="${ih}"/></g>`;
+  }
+  if(o.ref!=null)g+=`<line class="ref" x1="${m.l}" x2="${m.l+iw}" y1="${y(o.ref)}" y2="${y(o.ref)}"/>`;
+  if(o.line){const pts=o.line.values.map((v,i)=>[m.l+band*(i+.5),ly(v)]);
+    g+=`<path class="ln sacc" d="M${pts.map(p=>p.join(',')).join('L')}" style="pointer-events:none"/>`;
+    pts.forEach((p,i)=>{g+=`<circle class="dot sacc" cx="${p[0]}" cy="${p[1]}" r="${i===pts.length-1?4.5:3.2}" style="pointer-events:none"/>`;
+      if(!narrow)g+=`<text class="vl" x="${p[0]}" y="${p[1]-10}" text-anchor="middle" style="pointer-events:none">${o.line.fmt(o.line.values[i],true)}</text>`})}
+  el.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria||'Gráfico')}">${g}</svg>`;
+  if(o.tip)bindHits(el,o.tip);
+}
+function lines(el,o){
+  const W=el.clientWidth||600,H=el.clientHeight||260,narrow=W<520;
+  const m={t:18,r:narrow?52:64,b:28,l:narrow?44:54};const iw=W-m.l-m.r,ih=H-m.t-m.b,n=o.cats.length;
+  const all=[0];o.series.forEach(s=>all.push(...s.values));const tk=ticks(Math.min(...all),Math.max(...all)),y0=tk[0],y1=tk[tk.length-1];
+  const y=v=>m.t+ih-(v-y0)/(y1-y0)*ih,x=i=>m.l+iw*(n===1?.5:i/(n-1));
+  let g='';tk.forEach(t=>{g+=`<line class="grid" x1="${m.l}" x2="${m.l+iw}" y1="${y(t)}" y2="${y(t)}"/><text class="tick" x="${m.l-8}" y="${y(t)}" text-anchor="end" dominant-baseline="middle">${ax(t)}</text>`});
+  o.series.forEach((s,j)=>{const pts=s.values.map((v,i)=>[x(i),y(v)]);
+    if(j===0)g+=`<path class="area1" d="M${x(0)},${y(y0)}L${pts.map(p=>p.join(',')).join('L')}L${x(n-1)},${y(y0)}Z"/>`;
+    g+=`<path class="ln ${s.stroke}" d="M${pts.map(p=>p.join(',')).join('L')}"/>`;
+    const L=pts[n-1];g+=`<circle class="dot ${s.stroke}" cx="${L[0]}" cy="${L[1]}" r="4.5"/><text class="vl" x="${L[0]+9}" y="${L[1]}" dominant-baseline="middle">${ax(s.values[n-1])}</text>`});
+  for(let i=0;i<n;i++){const bx=i===0?m.l:(x(i-1)+x(i))/2,ex=i===n-1?m.l+iw:(x(i)+x(i+1))/2;
+    g+=`<g class="col" data-i="${i}"><rect class="hl" x="${bx}" y="${m.t}" width="${ex-bx}" height="${ih}"/><text class="xl" x="${x(i)}" y="${H-8}" text-anchor="middle">${o.cats[i]}</text><rect class="hit" x="${bx}" y="${m.t}" width="${ex-bx}" height="${ih}"/></g>`}
+  el.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria||'Gráfico')}">${g}</svg>`;
+  if(o.tip)bindHits(el,o.tip);
+}
+function waterfall(el,steps,opt={}){
+  const W=el.clientWidth||900,H=el.clientHeight||300,narrow=W/steps.length<62;
+  const m={t:24,r:8,b:narrow?62:40,l:narrow?44:54};const iw=W-m.l-m.r,ih=H-m.t-m.b,n=steps.length;
+  let run=0;const segs=steps.map(s=>{let a,b;if(s.k==='t'){a=0;b=s.v;run=s.v}else{a=run;b=run+s.v;run=b}return{...s,a,b}});
+  const all=[0];segs.forEach(s=>all.push(s.a,s.b));const tk=ticks(Math.min(...all),Math.max(...all)),y0=tk[0],y1=tk[tk.length-1];
+  const y=v=>m.t+ih-(v-y0)/(y1-y0)*ih;const band=iw/n,bw=Math.min(band*.64,56);
+  let g='';tk.forEach(t=>{g+=`<line class="grid" x1="${m.l}" x2="${m.l+iw}" y1="${y(t)}" y2="${y(t)}"/><text class="tick" x="${m.l-8}" y="${y(t)}" text-anchor="end" dominant-baseline="middle">${ax(t)}</text>`});
+  segs.forEach((s,i)=>{const cx=m.l+band*(i+.5),yt=Math.min(y(s.a),y(s.b)),h=Math.max(Math.abs(y(s.a)-y(s.b)),1.5);
+    const cls=s.k==='t'?(s.last?(s.v<0?'fneg':'facc'):'f1'):(s.v<0?'f3':'fpos');
+    g+=`<g class="col" data-i="${i}"><rect class="hl" x="${m.l+band*i}" y="${m.t}" width="${band}" height="${ih}"/>`;
+    g+=`<rect class="${cls}" x="${cx-bw/2}" y="${yt}" width="${bw}" height="${h}" rx="2"/>`;
+    if(i<n-1){const nx=m.l+band*(i+1.5)-bw/2;g+=`<line class="zero" x1="${cx+bw/2}" x2="${nx}" y1="${y(s.b)}" y2="${y(s.b)}" stroke-dasharray="2 3"/>`}
+    if(!narrow||s.k==='t')g+=`<text class="vl" x="${cx}" y="${yt-6}" text-anchor="middle">${ax(s.v)}</text>`;
+    if(narrow){g+=`<text class="xl" transform="translate(${cx+4},${H-m.b+12}) rotate(-38)" text-anchor="end">${s.s}</text>`}
+    else{const ws=s.s.split(' ');const l1=ws.slice(0,Math.ceil(ws.length/2)).join(' '),l2=ws.slice(Math.ceil(ws.length/2)).join(' ');
+      g+=`<text class="xl" x="${cx}" y="${H-m.b+16}" text-anchor="middle">${l1}</text>`+(l2?`<text class="xl" x="${cx}" y="${H-m.b+30}" text-anchor="middle">${l2}</text>`:'')}
+    g+=`<rect class="hit" x="${m.l+band*i}" y="${m.t}" width="${band}" height="${ih}"/></g>`});
+  g+=`<line class="zero" x1="${m.l}" x2="${m.l+iw}" y1="${y(0)}" y2="${y(0)}"/>`;
+  el.innerHTML=`<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opt.aria||'Cascata da receita bruta ao lucro')}">${g}</svg>`;
+  bindHits(el,i=>{const s=segs[i];return `<div class="th">${s.l}</div>`+tr('',s.k==='t'?'Saldo':'Efeito no lucro',money(s.v))+(s.d||'')+(opt.noPct?'':tr('','% da receita líquida',pct(s.v/T.receita_liquida)))});
+}
+function hbars(el,items,{cls='bg1',fmt=brl,share}={}){
+  const mx=Math.max(...items.map(i=>Math.abs(i.v)));
+  el.innerHTML=items.map(i=>{const tag=i.code!=null?'button':'div';const at=i.code!=null?` type="button" class="hb-btn" data-code="${i.code}" title="Ver lançamentos"`:' class="hb-r"';
+    return `<${tag}${at}><span class="nm">${esc(i.l)}</span><span class="vv">${fmt(i.v)}${share?`<small>${pct(i.v/share)}</small>`:''}</span><span class="hb-t"><i class="${i.cls||cls}" style="width:${(Math.abs(i.v)/mx*100).toFixed(2)}%"></i></span></${tag}>`}).join('');
+}
+function spark(vals,flags,med){
+  const W=132,H=30,p=3;const mn=Math.min(...vals,med),mx=Math.max(...vals,med),sp=(mx-mn)||1;
+  const x=i=>p+i*(W-2*p)/Math.max(1,vals.length-1),y=v=>H-p-(v-mn)/sp*(H-2*p);
+  const d='M'+vals.map((v,i)=>x(i).toFixed(1)+','+y(v).toFixed(1)).join('L');
+  let s=`<svg class="sp" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" aria-hidden="true"><line class="ref" x1="${p}" x2="${W-p}" y1="${y(med)}" y2="${y(med)}" style="stroke-width:1"/><path class="ln s2" d="${d}"/>`;
+  flags.forEach(i=>{s+=`<circle cx="${x(i)}" cy="${y(vals[i])}" r="2.8" class="facc"/>`});
+  return s+'</svg>';
+}
+const median=a=>{const b=[...a].sort((x,y)=>x-y),h=b.length>>1;return b.length%2?b[h]:(b[h-1]+b[h])/2};
+
+/* ---------- conteúdo ---------- */
+const RL=T.receita_liquida,RB=T.receita_bruta,RO=T.resultado_operacional,LU=T.lucro,DED=T.deducoes,CMV=T.cmv;
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const cl=s=>cap(String(s).toLowerCase()).replace(/\b(icms|ipi|pis|cofins|iss|inss|fgts|irpj|csll|irrf|st|pj|ti|t\.i\.)(?![\wÀ-ú])/gi,m=>m.toUpperCase());
+const PERL=N===1?`${MF[0]} de ${YEAR}`:`${MF[0]} a ${MF[N-1]} de ${YEAR}`;
+const PERS=N===1?`${M[0]} ${YEAR}`:`${M[0]}–${M[N-1]} ${YEAR}`;
+const RNG=N===1?M[0]:`${M[0]}–${M[N-1]}`;
+const GREC='RECEITAS VENDAS DE MERCADORIAS E PRODUTOS E SERVIÇOS',GDED='(-) DEVOLUÇÕES/CANCELAMENTOS/IMPOSTOS',GCUS='CUSTOS DAS MERCADORIAS/PRODUTOS VENDIDOS';
+const accts=g=>D.dre.filter(r=>r[2]==='c'&&groupOf[r[1]]===g).map(r=>({l:r[0],v:sum(r[3]),vals:r[3],code:r[1]}));
+const notes=(id,arr)=>{$(id).innerHTML=arr.filter(Boolean).map(t=>`<li><span>${t}</span></li>`).join('')};
+const kpi=(l,v,f)=>`<div class="card kpi"><span class="lbl">${l}</span><span class="kv">${v}</span><span class="kf">${f}</span></div>`;
+const qLabel=k=>`${k+1}º`;
+/* trimestres calculados a partir da série mensal */
+const tri=[...Array(NQ).keys()].map(k=>{const [x,y]=qRange(k);const d={full:(y-x)===3,x,y};
+  ['receita_bruta','deducoes','receita_liquida','cmv','resultado_operacional','desp_adm','desp_coml','desp_fin','lucro'].forEach(f=>d[f]=sum(S[f].slice(x,y)));
+  d.margem_bruta=sdv(d.resultado_operacional,d.receita_liquida);d.margem_liquida=sdv(d.lucro,d.receita_liquida);return d});
+
+/* textos fixos */
+$('#brandName').textContent=META.empresa;
+$('#perLong').textContent=cap(PERL);
+$('#empDd').innerHTML=esc(META.empresa)+(META.cnpj?'<br>CNPJ '+esc(META.cnpj):'');
+$('#perShort').textContent='Demonstração do Resultado · '+PERS;
+$('#eyebrow').textContent='Resultado acumulado · '+(N===1?'1 mês':N+' meses');
+$('#subWater').textContent='Acumulado de '+PERL.replace(/ de \d{4}$/,'');
+$('#varFoot').textContent=`Variação = desvio-padrão dos ${N} meses dividido pela média mensal. Até 15%: estável; de 15% a 35%: moderada; acima de 35%: alta. Mês fora da faixa: valor que se afasta mais de 50% da mediana da conta. Só entram contas com acumulado a partir de R$ 20 mil. Clique em uma conta para ver o gráfico.`+(N<3?' Com menos de três meses de dados a análise de variação não é calculada.':'');
+$('#dreFoot').textContent='Valores em R$. Entre parênteses: reduções do resultado. % RL = participação sobre a receita líquida acumulada. Clique em um grupo para abrir as contas. Clique em uma conta para ver os lançamentos que formam o valor; clicando em um mês, abre só aquele mês.'+(tri.some(q=>!q.full)?' * Trimestre parcial: considera apenas os meses já lançados.':'');
+
+/* ---- dados derivados ---- */
+const hasIR=D.dre.some(r=>r[2]==='c'&&groupOf[r[1]]==='PROVISÃO P/ IRPJ E CSLL'&&Math.abs(sum(r[3]))>0.5);
+const hasDep=D.dre.some(r=>r[2]==='c'&&/DEPRECIA/i.test(r[0])&&Math.abs(sum(r[3]))>0.5);
+const REC=accts(GREC).filter(i=>Math.abs(i.v)>0.5).sort((a,b)=>b.v-a.v);
+const recTop=REC.slice(0,3),recRest=REC.slice(3);
+const dedRows=D.dre.filter(r=>r[2]==='c'&&groupOf[r[1]]===GDED);
+const dedNeg=dedRows.map(r=>({l:r[0].replace('(-) ',''),v:-sum(r[3]),code:r[1]})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v);
+const cred=-dedRows.map(r=>-sum(r[3])).filter(v=>v<0).reduce((a,b)=>a+b,0);
+const DT=T.desp_adm+T.desp_coml+T.desp_fin+T.outras_desp;
+const bM=argmax(mb),wM=argmin(mb),bL=argmax(S.lucro),wL=argmin(S.lucro),rM=argmax(S.receita_bruta);
+const expAll=['DESPESAS ADMINISTRATIVAS','DESPESAS COMERCIAIS','DESPESAS FINANCEIRAS','OUTRAS DESPESAS'].flatMap(g=>accts(g)).map(a=>({...a,v:-a.v})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v);
+const admItems=accts('DESPESAS ADMINISTRATIVAS').map(a=>({l:a.l,v:-a.v,code:a.code})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v).slice(0,12);
+const comItems=accts('DESPESAS COMERCIAIS').map(a=>({l:a.l,v:-a.v,code:a.code})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v);
+const finItems=accts('DESPESAS FINANCEIRAS').map(a=>({l:a.l,v:-a.v,code:a.code})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v);
+const cusItems=accts(GCUS).filter(a=>!/ESTOQUE/i.test(a.l)).map(a=>({l:a.l,v:-a.v,code:a.code})).filter(i=>i.v>0).sort((a,b)=>b.v-a.v).slice(0,12);
+const hasMP=S.mp_ef.some(v=>Math.abs(v)>0.5),hasPA=S.pa_ef.some(v=>Math.abs(v)>0.5);
+const CB=[['materiais','Materiais consumidos','f1','bg1'],['pessoal_producao','Pessoal da produção','f2','bg2'],['gerais_fabricacao','Gastos gerais e demais custos','f3','bg3'],['importacao','Importação','f4','bg4']].filter(x=>Math.abs(T[x[0]])>0.5);
+const cbBig=[...CB].sort((a,b)=>Math.abs(T[b[0]])-Math.abs(T[a[0]]));
+
+/* ---- visão geral ---- */
+$('#heroH').innerHTML=`Receita líquida de <span class="metal">${brlL(RL)}</span> em ${N===1?'um mês':(N+' meses')}`;
+const nao=[];if(!hasIR)nao.push('IRPJ e CSLL');if(!hasDep)nao.push('depreciação');
+$('#heroLead').textContent=`Resultado operacional de ${brl(RO)} (${pct(sdv(RO,RL))} da receita líquida) e ${LU<0?'prejuízo':'lucro'} de ${brl(Math.abs(LU))} no acumulado de ${PERL.replace(/ de \d{4}$/,'')}, conforme os lançamentos do razão contábil.`+(nao.length?` O resultado não inclui lançamentos de ${nao.join(' nem de ')} no período.`:'');
+$('#heroM').innerHTML=[
+  ['Receita bruta',brl(RB),'Vendas e serviços do período'],
+  ['Deduções',brl(DED),pct(sdv(DED,RB))+' da receita bruta'],
+  ['Resultado operacional',brl(RO),'Margem bruta de '+pct(sdv(RO,RL))],
+  [LU<0?'Prejuízo do período':'Lucro do período',`<span class="metal">${brl(LU)}</span>`,'Margem líquida de '+pct(sdv(LU,RL))]
+].map(([l,v,f])=>`<div><span class="lbl">${l}</span><span class="kv">${v}</span><span class="kf">${f}</span></div>`).join('');
+
+const QN=[...Array(NQ).keys()].map(k=>`${k+1}º trimestre${tri[k].full?'':' (parcial)'}`);
+const QM=[...Array(NQ).keys()].map(k=>M.slice(...qRange(k)).map(x=>x.toLowerCase()).join(' · '));
+$('#triCards').innerHTML=tri.map((q,k)=>{const ms=S.lucro.slice(q.x,q.y),mx=Math.max(1,...S.lucro.map(Math.abs));
+  return `<div class="card"><div class="q-top"><span class="q-name">${QN[k]}</span><span class="q-mo">${QM[k]}</span></div>
+  <div><span class="lbl">${q.lucro<0?'Prejuízo':'Lucro'} do trimestre</span><div class="q-big ${q.lucro<0?'neg-t':'pos-t'}">${brl(q.lucro)}</div></div>
+  <div class="qbars" aria-label="Lucro por mês">${ms.map((v,j)=>`<div><b class="${v<0?'bgneg':'bg1'}" style="height:${Math.max(3,Math.abs(v)/mx*40).toFixed(1)}px" title="${MF[q.x+j]}: ${money(v)}"></b><span>${M[q.x+j]} ${ax(v)}</span></div>`).join('')}</div>
+  <div class="q-rows"><div><span>Receita líquida</span><span>${brl(q.receita_liquida)}</span></div><div><span>Margem bruta</span><span>${pct(q.margem_bruta)}</span></div><div><span>Margem líquida</span><span class="${q.margem_liquida<0?'neg-t':''}">${pct(q.margem_liquida)}</span></div></div></div>`}).join('');
+document.getElementById('triCards').style.gridTemplateColumns=`repeat(${Math.min(NQ,4)},minmax(0,1fr))`;
+
+const allNeg=tri.every(q=>q.lucro<0),allPos=tri.every(q=>q.lucro>=0);
+notes('#notesVisao',[
+  `<b>${tri.length>1?(allNeg?'Todos os trimestres fecharam no vermelho:':allPos?'Todos os trimestres fecharam com lucro:':'Resultado por trimestre:'):'Resultado do trimestre:'}</b> ${tri.map((q,k)=>`${brl(q.lucro)} no ${qLabel(k)}${q.full?'':' (parcial)'}`).join(', ')}. O acumulado é ${brl(LU)}, ${pct(sdv(LU,RL))} da receita líquida.`,
+  `<b>Margem bruta de ${pct(sdv(RO,RL))}</b> e resultado operacional de ${brl(RO)}. As despesas operacionais (administrativas, comerciais, financeiras e outras) somam ${brl(DT)}.`,
+  expAll[0]&&`<b>Maior conta de despesa:</b> ${cl(expAll[0].l)}, com ${brl(expAll[0].v)}, ${pct(expAll[0].v/DT)} das despesas operacionais.`,
+  N>1&&`<b>Maior margem bruta:</b> ${MF[bM]} (${pct(mb[bM])}). <b>Menor:</b> ${MF[wM]} (${pct(mb[wM])}).`,
+  N>1&&`<b>Melhor mês:</b> ${MF[bL]}, com ${brl(S.lucro[bL])}. <b>Pior mês:</b> ${MF[wL]}, com ${brl(S.lucro[wL])}.`,
+  `<b>As deduções levam ${pct(sdv(DED,RB))} da receita bruta.</b>`+(dedNeg[0]?` A maior é ${cl(dedNeg[0].l)}, com ${brl(dedNeg[0].v)}`+(dedNeg[1]?`, seguida de ${cl(dedNeg[1].l)}, com ${brl(dedNeg[1].v)}`:'')+'.':''),
+  nao.length&&`<b>O resultado não inclui ${nao.join(' nem ')}.</b> Não há lançamento dessas contas no razão do período.`
+]);
+
+/* ---- receita ---- */
+const cli=D.cli,cliTot=sum(cli.map(c=>c[1]));const cum=[];cli.reduce((a,c,i)=>(cum[i]=a+c[1],cum[i]),0);
+const nFor=p=>cum.findIndex(v=>v/cliTot>=p)+1;
+$('#kRec').innerHTML=recTop.map(a=>kpi(cl(a.l),brl(a.v),pct(sdv(a.v,RB))+' da receita bruta')).join('')+kpi('Clientes faturados',nf0.format(cli.length),cli.length?`${nFor(.8)} clientes somam 80% da receita`:'Sem identificação de clientes nos históricos');
+$('#dedSub').textContent=`${brl(DED)} no período · ${pct(sdv(DED,RB))} da receita bruta`;
+hbars($('#hbDed'),dedNeg,{cls:'bg3',share:RB});
+$('#dedFoot').textContent=(cred>0?`Contas de crédito sobre devoluções reduzem o total em ${brl(cred)}. `:'')+'Percentuais sobre a receita bruta.';
+$('#cliStrip').innerHTML=cli.length?[[2,'2 maiores'],[5,'5 maiores'],[10,'10 maiores'],[20,'20 maiores']].map(([k,l])=>`<div><b>${pct(cum[Math.min(k,cli.length)-1]/cliTot)}</b><span>${l}</span></div>`).join(''):'';
+hbars($('#hbCli'),cli.slice(0,10).map((c,i)=>({l:`${i+1}. ${c[0]}`,v:c[1],cls:i<2?'bgacc':'bg1'})),{share:cliTot||1});
+notes('#notesRec',[
+  REC[0]&&`<b>${cl(REC[0].l)} responde por ${pct(sdv(REC[0].v,RB))} da receita bruta.</b>`+(REC[1]?` ${cl(REC[1].l)} soma ${brl(REC[1].v)} (${pct(sdv(REC[1].v,RB))}).`:''),
+  cli.length>1&&`<b>Os dois maiores clientes concentram ${pct(cum[1]/cliTot)} da receita.</b> ${esc(cli[0][0])} sozinho representa ${pct(cli[0][1]/cliTot)}.`,
+  cli.length>0&&`<b>${nFor(.8)} de ${cli.length} clientes</b> formam 80% do faturamento.`,
+  N>1&&`<b>Maior receita bruta mensal:</b> ${MF[rM]}, com ${brl(S.receita_bruta[rM])}.`,
+  `<b>Receita bruta média de ${brl(RB/N)} por mês</b> e receita líquida média de ${brl(RL/N)}.`
+]);
+$('#cliCount').textContent=`${cli.length} clientes com faturamento de ${PERL.replace(/ de \d{4}$/,'')}`;
+function cliTable(q=''){q=q.trim().toUpperCase();const rows=cli.map((c,i)=>({c,i})).filter(o=>!q||o.c[0].toUpperCase().includes(q));
+  $('#cliTbl').innerHTML=`<thead><tr><th>Cliente</th><th>Receita bruta</th><th>% do total</th><th>Acumulado</th></tr></thead><tbody>`+(rows.length?rows.map(({c,i})=>`<tr><td><span class="code">${i+1}º</span>${esc(c[0])}</td><td>${nf0.format(c[1])}</td><td>${pct(c[1]/cliTot)}</td><td>${pct(cum[i]/cliTot)}</td></tr>`).join(''):`<tr><td colspan="4" class="empty">Nenhum cliente encontrado${q?` para “${esc(q)}”`:''}.</td></tr>`)+'</tbody>'}
+cliTable();$('#cliSearch').addEventListener('input',e=>cliTable(e.target.value));
+const RECSER=recTop.map((a,i)=>({name:cl(a.l),values:a.vals,cls:['f1','f2','f4'][i],bg:['bg1','bg2','bg4'][i]}));
+if(recRest.length)RECSER.push({name:'Demais receitas',values:S.receita_bruta.map((_,m)=>sum(recRest.map(a=>a.vals[m]))),cls:'f3',bg:'bg3'});
+$('#lgRec').innerHTML=RECSER.map(s=>`<span><i class="${s.bg}"></i>${esc(s.name)}</span>`).join('');
+
+/* ---- custos ---- */
+$('#kCus').innerHTML=kpi('Custo total (CMV)',brl(CMV),pct(sdv(CMV,RL))+' da receita líquida')+kpi('Margem bruta',pct(sdv(RO,RL)),'Resultado operacional de '+brl(RO))+cbBig.slice(0,2).map(x=>kpi(x[1],brl(T[x[0]]),pct(sdv(T[x[0]],CMV))+' do CMV')).join('');
+hbars($('#hbCus'),cusItems,{cls:'bg1'});
+$('#lgCmv').innerHTML=CB.map(x=>`<span><i class="${x[3]}"></i>${x[1]}</span>`).join('');
+const EST=[];if(hasMP)EST.push({name:'Matéria-prima',values:S.mp_ef,stroke:'s1',bg:'bg1'});if(hasPA)EST.push({name:'Produto acabado',values:S.pa_ef,stroke:'s4',bg:'bg4'});
+$('#lgEst').innerHTML=EST.map(s=>`<span><i class="ln ${s.bg}"></i>${s.name}</span>`).join('');
+if(!EST.length)$('#rowEst').hidden=true;
+const stkNote=(ef,ei,nome)=>{let n=0,t=0;for(let i=0;i<N-1;i++){const d=ef[i]+ei[i+1];if(Math.abs(d)>1){n++;t+=Math.abs(d)}}return n?`<b>Estoque de ${nome}:</b> o saldo inicial de ${n} ${n===1?'mês não bate':'meses não batem'} com o saldo final do mês anterior, somando ${money(t)} de diferença. Vale confirmar o fechamento do estoque.`:null};
+const stkVar=(ef,nome)=>{const a=ef[0],b=ef[N-1];return N>1&&Math.abs(a)>0.5?`<b>Estoque final de ${nome}:</b> ${brl(a)} em ${MF[0]} e ${brl(b)} em ${MF[N-1]} (${b>=a?'+':''}${pct(b/a-1)}).`:null};
+notes('#notesCus',[
+  `<b>O custo total consome ${pct(sdv(CMV,RL))} da receita líquida.</b>`+cbBig.slice(0,2).map(x=>` ${x[1]}: ${pct(sdv(T[x[0]],CMV))} do custo.`).join(''),
+  N>1&&`<b>Menor margem bruta em ${MF[wM]}:</b> ${pct(mb[wM])}${S.cmv[wM]>S.receita_liquida[wM]?', com o CMV acima da receita líquida':''}. <b>Maior em ${MF[bM]}:</b> ${pct(mb[bM])}.`,
+  (hasMP||hasPA)&&stkVar(S.mp_ef.map((v,i)=>v+S.pa_ef[i]),'matéria-prima e produto acabado'),
+  (hasMP||hasPA)&&stkNote(S.mp_ef.map((v,i)=>v+S.pa_ef[i]),S.mp_ei.map((v,i)=>v+S.pa_ei[i]),'matéria-prima e produto acabado'),
+  Math.abs(T.importacao)>0.5&&`<b>Custos de importação somam ${brl(T.importacao)}</b>, ${pct(sdv(T.importacao,CMV))} do CMV.`,
+  `<b>Os valores são os do razão contábil</b>, na conta em que cada lançamento foi registrado.`
+]);
+
+/* ---- despesas ---- */
+$('#kDes').innerHTML=kpi('Despesas administrativas',brl(T.desp_adm),pct(sdv(T.desp_adm,RL))+' da receita líquida')+kpi('Despesas comerciais',brl(T.desp_coml),pct(sdv(T.desp_coml,RL))+' da receita líquida')+kpi('Despesas financeiras',brl(T.desp_fin),finItems[0]?cl(finItems[0].l)+': '+brl(finItems[0].v):'Sem lançamentos')+kpi('Total de despesas',brl(DT),pct(sdv(DT,RL))+' da receita líquida');
+hbars($('#hbAdm'),admItems,{cls:'bg1',share:T.desp_adm||1});
+hbars($('#hbCom'),comItems,{cls:'bg4',share:T.desp_coml||1});
+if(!comItems.length)$('#hbCom').innerHTML='<p class="foot">Sem lançamentos nas contas de despesas comerciais.</p>';
+const totCD=CMV+DT;
+notes('#notesDes',[
+  `<b>Despesas totais de ${brl(DT)}</b>, ou ${pct(sdv(DT,RL))} da receita líquida; média de ${brl(DT/N)} por mês.`,
+  admItems.length&&`<b>As administrativas são ${pct(sdv(T.desp_adm,DT))} das despesas.</b> As maiores contas: ${admItems.slice(0,3).map(i=>`${i.l.toLowerCase()} (${brl(i.v)})`).join(', ')}.`,
+  T.desp_coml>0.5&&`<b>Despesas comerciais de ${brl(T.desp_coml)}</b>, ${pct(sdv(T.desp_coml,RL))} da receita líquida.`+(comItems[0]?` A maior conta é ${cl(comItems[0].l)} (${brl(comItems[0].v)}).`:''),
+  finItems[0]&&`<b>Despesas financeiras de ${brl(T.desp_fin)}.</b> A maior conta é ${cl(finItems[0].l)}, com ${brl(finItems[0].v)} (${pct(sdv(finItems[0].v,T.desp_fin))}).`,
+  D.forn[0]&&`<b>Maior fornecedor do período:</b> ${esc(D.forn[0][0])}, com ${brl(D.forn[0][3])} em ${esc(D.forn[0][2].toLowerCase())}, ${pct(sdv(D.forn[0][3],totCD))} do total de custos e despesas.`
+]);
+const fmax=Math.max(1,...D.forn.map(f=>f[3]));
+function fornTable(q=''){q=q.trim().toUpperCase();const rows=D.forn.map((f,i)=>({f,i})).filter(o=>!q||(o.f[0]+' '+o.f[1]).toUpperCase().includes(q));
+  $('#fornTbl').innerHTML=`<thead><tr><th>Fornecedor</th><th>Gasto no período</th></tr></thead><tbody>`+(rows.length?rows.map(({f,i})=>`<tr class="click" tabindex="0" data-forn="${esc(f[0])}" title="Ver lançamentos"><td><span class="code">${i+1}º · ${esc(f[1])} · ${esc(f[2])}</span>${esc(f[0])}</td><td>${nf0.format(f[3])}<span class="bar-in" style="width:${(f[3]/fmax*70).toFixed(1)}px"></span></td></tr>`).join(''):`<tr><td colspan="2" class="empty">Nenhum fornecedor encontrado${q?` para “${esc(q)}”`:''}.</td></tr>`)+'</tbody>'}
+fornTable();$('#fornSearch').addEventListener('input',e=>fornTable(e.target.value));
+
+/* ---------- DRE table ---------- */
+const RLrow=rowName('RECEITA LIQUIDA'),RLtot=sum(RLrow[3]);
+const open=new Set();let dreMode='m',dreQ='';
+function buildDre(){
+  const head=dreMode==='m'?M:tri.map((q,k)=>`${k+1}º tri${q.full?'':'*'}`);
+  let h=`<thead><tr><th>Conta</th>${head.map(x=>`<th>${x}</th>`).join('')}<th>Acumulado</th><th>% RL</th></tr></thead><tbody>`;let gi=-1;
+  D.dre.forEach((r,i)=>{const [nm,code,tp,v]=r;const cols=dreMode==='m'?v:tri.map((q,k)=>{const [x,y]=qRange(k);return sum(v.slice(x,y))});const tot=sum(v);
+    const pcv=Math.abs(tot)>0.5?pct(tot/RLtot):'–';
+    if(tp==='g'){gi=i;const leaf=!(D.dre[i+1]&&D.dre[i+1][2]==='c');
+      h+=`<tr class="g${leaf?' leaf':''}" data-gid="${i}" ${leaf?'':'tabindex="0" aria-expanded="false"'}><td>${leaf?'<span class="car"></span>':'<span class="car" aria-hidden="true">›</span>'}${esc(nm)}</td>`}
+    else if(tp==='t')h+=`<tr class="t"><td>${esc(nm)}</td>`;
+    else h+=`<tr class="c" tabindex="0" data-code="${code}" data-g="${gi}" data-k="${esc((nm+' '+code).toUpperCase())}" title="Ver lançamentos"><td>${esc(nm)}<span class="nm-go" aria-hidden="true">↗</span>${code?`<span class="code">${code}</span>`:''}</td>`;
+    h+=cols.map(x=>`<td>${full(x)}</td>`).join('')+`<td class="acc">${full(tot)}</td><td class="pc">${pcv}</td></tr>`});
+  $('#dreTbl').innerHTML=h+'</tbody>';applyDre();
+}
+function applyDre(){const q=dreQ.trim().toUpperCase();
+  $$('#dreTbl tr.c').forEach(r=>{r.hidden=q?!r.dataset.k.includes(q):!open.has(r.dataset.g)});
+  $$('#dreTbl tr.g').forEach(r=>{if(!r.classList.contains('leaf'))r.setAttribute('aria-expanded',q||open.has(r.dataset.gid)?'true':'false')})}
+$('#dreTbl').addEventListener('click',e=>{const r=e.target.closest('tr.g');
+  if(r){if(r.classList.contains('leaf'))return;const id=r.dataset.gid;open.has(id)?open.delete(id):open.add(id);applyDre();return}
+  const c=e.target.closest('tr.c');if(!c)return;const td=e.target.closest('td');const k=[...c.children].indexOf(td);let months=null;
+  if(dreMode==='m'){if(k>=1&&k<=N)months=[k-1]}else if(k>=1&&k<=NQ){const [x,y]=qRange(k-1);months=ALLM.slice(x,y)}
+  openDr({code:c.dataset.code,months})});
+$('#dreTbl').addEventListener('keydown',e=>{const r=e.target.closest('tr.g,tr.c');if(r&&(e.key==='Enter'||e.key===' ')){e.preventDefault();r.click()}});
+$$('.seg button').forEach(b=>b.addEventListener('click',()=>{dreMode=b.dataset.mode;$$('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));buildDre()}));
+$('#dreOpen').addEventListener('click',()=>{$$('#dreTbl tr.g:not(.leaf)').forEach(r=>open.add(r.dataset.gid));applyDre()});
+$('#dreClose').addEventListener('click',()=>{open.clear();applyDre()});
+$('#dreSearch').addEventListener('input',e=>{dreQ=e.target.value;applyDre()});
+buildDre();
+
+/* ---------- variação ---------- */
+const CLS={'Variação alta':['neg','Alta'],'Variação moderada':['warn','Moderada'],'Estável':['pos','Estável']};
+const VR=D.cv.map(([code,nm,cv,fl,cl])=>{const r=rowBy(code);const s=code.startsWith('6')?1:-1;const vals=r[3].map(x=>x*s);return{code,nm,cv,fl:fl.map(m=>m-1),cl,vals,tot:sum(vals),med:median(vals),g:gs(code)}});
+let vF='all',vG='',vS='v',vQ='',vSel=null;
+const cnt=k=>VR.filter(r=>k==='all'||r.cl===k).length;
+$('#varChips').innerHTML=[['all','Todas'],['Variação alta','Variação alta'],['Variação moderada','Moderada'],['Estável','Estável']].map(([k,l])=>`<button type="button" class="chip" data-f="${k}" aria-pressed="${k==='all'}">${l} <b>${cnt(k)}</b></button>`).join('');
+const groups=[...new Set(VR.map(r=>r.g))];
+$('#varGroup').innerHTML=`<option value="">Todos os grupos</option>`+groups.map(g=>`<option>${g}</option>`).join('');
+function varTable(){const q=vQ.trim().toUpperCase();
+  let rows=VR.filter(r=>(vF==='all'||r.cl===vF)&&(!vG||r.g===vG)&&(!q||(r.nm+' '+r.code).toUpperCase().includes(q)));
+  rows.sort(vS==='cv'?(a,b)=>b.cv-a.cv:(a,b)=>Math.abs(b.tot)-Math.abs(a.tot));
+  $('#varTbl').innerHTML=`<thead><tr><th>Conta</th><th>Grupo</th><th>Acumulado</th><th style="text-align:left">${M[0]} → ${M[N-1]}</th><th>Variação</th><th style="text-align:left">Classificação</th><th style="text-align:left">Meses fora da faixa</th></tr></thead><tbody>`+
+    (rows.length?rows.map(r=>`<tr class="click${vSel===r.code?' sel':''}" data-c="${r.code}" tabindex="0"><td>${esc(r.nm)}<span class="code">${r.code}</span></td><td><span class="gchip">${r.g}</span></td><td>${nf0.format(r.tot)}</td><td class="l">${spark(r.vals,r.fl,r.med)}</td><td>${pct(r.cv,0)}</td><td class="l"><span class="pill ${CLS[r.cl][0]}">${CLS[r.cl][1]}</span></td><td class="l">${r.fl.length?r.fl.map(i=>M[i]).join(', '):'<span style="color:var(--faint)">nenhum</span>'}</td></tr>`).join(''):`<tr><td colspan="7" class="empty">Nenhuma conta com esses filtros.</td></tr>`)+'</tbody>'}
+function varDetail(code){const r=VR.find(x=>x.code===code);if(!r){$('#varDetail').hidden=true;return}$('#varDetail').hidden=false;vSel=code;
+  $('#vdGroup').textContent=r.g;$('#vdTitle').textContent=r.nm;$('#vdCode').innerHTML=`${r.code} · <span class="pill ${CLS[r.cl][0]}">${r.cl}</span>`;
+  $('#vdStrip').innerHTML=[[brl(r.tot),'Acumulado'],[brl(r.tot/N),'Média mensal'],[brl(r.med),'Mediana'],[pct(r.cv,0),'Variação (CV)']].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+  drawVar();$$('#varTbl tr.click').forEach(t=>t.classList.toggle('sel',t.dataset.c===code))}
+function drawVar(){const r=VR.find(x=>x.code===vSel);if(!r)return;
+  bars($('#chVar'),{cats:M,series:[{values:r.vals,cls:'f1'}],flags:r.fl,ref:r.med,labels:v=>ax(v),aria:'Valores mensais de '+r.nm,
+    tip:i=>`<div class="th">${esc(r.nm)} · ${MF[i]}</div>`+tr(r.fl.includes(i)?'bgacc':'bg1','Valor',money(r.vals[i]))+tr('','Mediana',money(r.med))+tr('','Diferença',pct(r.med?r.vals[i]/r.med-1:NaN,0))})}
+$('#varChips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;vF=b.dataset.f;$$('#varChips .chip').forEach(x=>x.setAttribute('aria-pressed',x===b));varTable()});
+$('#varGroup').addEventListener('change',e=>{vG=e.target.value;varTable()});
+$('#varSort').addEventListener('change',e=>{vS=e.target.value;varTable()});
+$('#varSearch').addEventListener('input',e=>{vQ=e.target.value;varTable()});
+$('#varTbl').addEventListener('click',e=>{const t=e.target.closest('tr.click');if(t){varDetail(t.dataset.c);$('#varDetail').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}});
+$('#varTbl').addEventListener('keydown',e=>{const t=e.target.closest('tr.click');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t.click()}});
+$('#vdOpen').addEventListener('click',()=>openDr({code:vSel}));
+varTable();
+{const cand=[...VR].filter(r=>r.cl==='Variação alta').sort((a,b)=>Math.abs(b.tot)-Math.abs(a.tot));vSel=cand.length?cand[0].code:(VR[0]?VR[0].code:null)}
+
+
+/* ---------- ponte entre trimestres completos ---------- */
+const fullQ=tri.map((q,k)=>q.full?k:-1).filter(k=>k>=0);
+const BR=fullQ.length>=2;
+const ka=BR?fullQ[fullQ.length-2]:0,kb=BR?fullQ[fullQ.length-1]:0;
+const qs=(a,k)=>sum(a.slice(tri[k].x,tri[k].y));
+const dQ=k=>qs(S[k],kb)-qs(S[k],ka);
+let QSTEPS=[];
+if(!BR){$('#rowBr').hidden=true}
+else{
+  const QA=tri[ka],QB=tri[kb],a1=`${ka+1}º tri`,b1=`${kb+1}º tri`;
+  const dd=(f,fmt=brl)=>tr('',`${a1} → ${b1}`,fmt(qs(S[f],ka))+' → '+fmt(qs(S[f],kb)));
+  QSTEPS=[
+    {s:`Resultado ${a1}`,l:`Resultado do ${ka+1}º trimestre`,v:QA.lucro,k:'t'},
+    {s:'Receita líquida',l:'Receita líquida',v:dQ('receita_liquida'),d:dd('receita_liquida')},
+    {s:'CMV',l:'Custo das mercadorias/produtos (CMV)',v:-dQ('cmv'),d:dd('cmv')},
+    {s:'Desp. administrativas',l:'Despesas administrativas',v:-dQ('desp_adm'),d:dd('desp_adm')},
+    {s:'Desp. comerciais',l:'Despesas comerciais',v:-dQ('desp_coml'),d:dd('desp_coml')},
+    {s:'Financeiras e outras',l:'Financeiras, outras e IRPJ/CSLL',v:-(dQ('desp_fin')+dQ('outras_desp'))+dQ('rec_fin')-dQ('ir_csll')},
+    {s:`Resultado ${b1}`,l:`Resultado do ${kb+1}º trimestre`,v:QB.lucro,k:'t',last:true}];
+  $('#brTitle').textContent=`Do ${ka+1}º para o ${kb+1}º trimestre`;
+  $('#brSub').textContent=`Efeito de cada grupo no resultado, do ${ka+1}º para o ${kb+1}º trimestre`;
+  $('#brLg').innerHTML=`<span><i class="bg1"></i>Resultado do ${ka+1}º tri</span><span><i class="bgneg"></i>Resultado do ${kb+1}º tri</span><span><i class="bg3"></i>Piora</span><span><i class="bgpos"></i>Melhora</span>`;
+  const pq=tri[NQ-1];
+  notes('#notesQ2',[
+    `<b>O ${kb+1}º trimestre ${QB.lucro>=QA.lucro?'melhorou':'piorou'} ${brl(Math.abs(QB.lucro-QA.lucro))} sobre o ${ka+1}º:</b> ${brl(QA.lucro)} no ${ka+1}º e ${brl(QB.lucro)} no ${kb+1}º.`,
+    `<b>A receita líquida ${QB.receita_liquida>=QA.receita_liquida?'subiu':'caiu'} ${brl(Math.abs(QB.receita_liquida-QA.receita_liquida))}</b>, de ${brl(QA.receita_liquida)} para ${brl(QB.receita_liquida)}. O CMV foi de ${pct(sdv(QA.cmv,QA.receita_liquida))} para ${pct(sdv(QB.cmv,QB.receita_liquida))} da receita líquida.`,
+    `<b>A margem bruta foi de ${pct(QA.margem_bruta)} para ${pct(QB.margem_bruta)}.</b>`,
+    `<b>As despesas administrativas ${QB.desp_adm<=QA.desp_adm?'caíram':'subiram'} ${brl(Math.abs(QA.desp_adm-QB.desp_adm))}</b>, de ${brl(QA.desp_adm)} para ${brl(QB.desp_adm)}.`,
+    !pq.full&&`<b>${NQ}º trimestre (parcial):</b> ${brl(pq.lucro)} de ${LU<0?'resultado':'resultado'} em ${pq.y-pq.x} ${pq.y-pq.x===1?'mês':'meses'} (${M.slice(pq.x,pq.y).join(', ')}).`
+  ]);
+}
+
+/* ---------- lançamentos (drill-down) ---------- */
+const EA=ENT.a,EF=ENT.f,ER=ENT.r;const codeIdx={};EA.forEach((c,i)=>codeIdx[c]=i);
+const acctName={};D.dre.forEach(r=>{if(r[2]==='c')acctName[r[1]]=r[0]});
+const nameOf=c=>acctName[c]||c, groupLbl=c=>c===''?'Deduções':(gs(c)||'');
+const full2=v=>Math.abs(v)<0.005?'–':(v<0?'('+nf2.format(-v)+')':nf2.format(v));
+const drawer=$('#drawer'),back=$('#drBack');let lastFocus=null;
+const dr={scope:null,months:new Set(),q:'',view:'l',sort:'d',limit:400};
+function openDr(o){dr.scope=o;dr.months=new Set(o.months&&o.months.length?o.months:ALLM);dr.q='';dr.view='l';dr.sort='d';dr.limit=400;
+  $('#drSearch').value='';$('#drSort').value='d';
+  if(o.code!=null){$('#drGroup').textContent=groupLbl(o.code)||'Conta';$('#drTitle').textContent=nameOf(o.code);$('#drCode').textContent=o.code?'Conta '+o.code:'Conta de dedução';$('#drViewF').textContent='Por fornecedor'}
+  else{$('#drGroup').textContent='Fornecedor';$('#drTitle').textContent=o.forn;$('#drCode').textContent='Lançamentos nas contas de resultado';$('#drViewF').textContent='Por conta'}
+  lastFocus=document.activeElement;drawer.hidden=false;back.hidden=false;document.documentElement.style.overflow='hidden';hideTip();renderDr();$('#drClose').focus()}
+function closeDr(){drawer.hidden=true;back.hidden=true;document.documentElement.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus()}
+function baseRows(){const o=dr.scope;if(o.code!=null){const ai=codeIdx[o.code];return ER.filter(r=>r[0]===ai)}const fi=EF.indexOf(o.forn);return ER.filter(r=>r[4]===fi)}
+function renderDr(){
+  const isC=dr.scope.code!=null,all=baseRows();const mc=Array(N).fill(0);all.forEach(r=>{mc[r[1]-1]+=r[7]});
+  const allSel=dr.months.size===N;
+  $('#drMonths').innerHTML=`<button type="button" class="chip" data-m="all" aria-pressed="${allSel}">${RNG} <b>${nf0.format(sum(mc))}</b></button>`+M.map((m,i)=>`<button type="button" class="chip" data-m="${i}" aria-pressed="${!allSel&&dr.months.has(i)}" ${mc[i]?'':'disabled'}>${m} <b>${nf0.format(mc[i])}</b></button>`).join('');
+  const q=dr.q.trim().toUpperCase();
+  const rows=all.filter(r=>dr.months.has(r[1]-1)&&(!q||(r[5]+' '+EF[r[4]]+' '+r[3]+' '+(isC?'':nameOf(EA[r[0]]))).toUpperCase().includes(q)));
+  let deb=0,cre=0,n=0;rows.forEach(r=>{if(r[6]<0)deb-=r[6];else cre+=r[6];n+=r[7]});const sal=cre-deb;
+  let chk='';
+  if(isC&&!q){const dv=sum(rowBy(dr.scope.code)?rowBy(dr.scope.code)[3].filter((v,i)=>dr.months.has(i)):[]);
+    const rI=rowName('(-) ISS');const dvv=(dr.scope.code===''&&rI)?sum(rI[3].filter((v,i)=>dr.months.has(i))):dv;
+    chk=Math.abs(dvv-sal)<0.05?`<span class="pill pos">Confere com a DRE</span>`:`<span class="pill neg">DRE: ${full2(dvv)}</span>`}
+  $('#drSum').innerHTML=`<div><b>${nf0.format(n)}</b><span>Lançamentos</span></div><div><b>${brl(deb)}</b><span>Débitos</span></div><div><b>${brl(cre)}</b><span>Créditos</span></div><div><b>${brl(sal)}</b><span>${isC?'Saldo na DRE':'Saldo no resultado'} ${chk}</span></div>`;
+  const tb=$('#drTbl'),more=$('#drMore');const hasCons=rows.some(r=>r[7]>1);
+  if(dr.view==='f'){
+    const G=new Map();rows.forEach(r=>{const k=isC?EF[r[4]]:nameOf(EA[r[0]]);const g=G.get(k)||{k,n:0,d:0,c:0};g.n+=r[7];if(r[6]<0)g.d-=r[6];else g.c+=r[6];G.set(k,g)});
+    const L=[...G.values()].sort((a,b)=>Math.abs(b.c-b.d)-Math.abs(a.c-a.d));
+    tb.innerHTML=`<thead><tr><th class="l">${isC?'Fornecedor':'Conta'}</th><th>Lançamentos</th><th>Débitos</th><th>Créditos</th><th>Saldo</th><th>% do saldo</th></tr></thead><tbody>`+
+      (L.length?L.map(g=>`<tr class="click" tabindex="0" data-q="${esc(g.k)}"><td class="f">${esc(g.k)}</td><td>${nf0.format(g.n)}</td><td>${nf2.format(g.d)}</td><td>${nf2.format(g.c)}</td><td>${full2(g.c-g.d)}</td><td>${Math.abs(sal)>0.005?pct((g.c-g.d)/sal):'–'}</td></tr>`).join(''):`<tr><td colspan="6" class="empty">Nenhum lançamento com esse filtro.</td></tr>`)+'</tbody>';
+    more.hidden=true;$('#drFoot').textContent=L.length?'Clique em uma linha para ver os lançamentos dela.':'';
+  }else{
+    const R2=[...rows];if(dr.sort==='v')R2.sort((a,b)=>Math.abs(b[6])-Math.abs(a[6]));else R2.sort((a,b)=>a[1]-b[1]||a[2]-b[2]);
+    const sh=R2.slice(0,dr.limit);
+    tb.innerHTML=`<thead><tr><th class="l">Data</th><th class="l">Documento</th><th class="l">${isC?'Fornecedor':'Conta'}</th><th class="l">Histórico</th><th>Débito</th><th>Crédito</th></tr></thead><tbody>`+
+      (sh.length?sh.map(r=>`<tr><td class="l">${String(r[2]).padStart(2,'0')}/${String(r[1]).padStart(2,'0')}/${YEAR}</td><td class="l">${esc(r[3]||'–')}</td><td class="f">${esc(isC?EF[r[4]]:nameOf(EA[r[0]]))}</td><td class="h">${esc(r[5])}</td><td>${r[6]<0?nf2.format(-r[6]):''}</td><td>${r[6]>0?nf2.format(r[6]):''}</td></tr>`).join(''):`<tr><td colspan="6" class="empty">Nenhum lançamento com esse filtro.</td></tr>`)+'</tbody>';
+    more.hidden=R2.length<=dr.limit;more.textContent=`Mostrar mais (${nf0.format(Math.min(400,R2.length-dr.limit))} de ${nf0.format(R2.length-dr.limit)} restantes)`;
+    $('#drFoot').textContent=(R2.length>dr.limit?`Exibindo ${nf0.format(sh.length)} de ${nf0.format(R2.length)} linhas. Os totais acima consideram todas. `:'')+(hasCons?'A folha de pagamento aparece consolidada por mês.':'');
+  }
+}
+$('#drMonths').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b||b.disabled)return;const m=b.dataset.m;dr.months=new Set(m==='all'?ALLM:[+m]);dr.limit=400;renderDr()});
+$$('#drView button').forEach(b=>b.addEventListener('click',()=>{dr.view=b.dataset.v;$$('#drView button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderDr()}));
+$('#drSort').addEventListener('change',e=>{dr.sort=e.target.value;renderDr()});
+$('#drSearch').addEventListener('input',e=>{dr.q=e.target.value;dr.limit=400;renderDr()});
+$('#drMore').addEventListener('click',()=>{dr.limit+=400;renderDr()});
+$('#drTbl').addEventListener('click',e=>{const t=e.target.closest('tr[data-q]');if(!t)return;dr.q=t.dataset.q;$('#drSearch').value=t.dataset.q;dr.view='l';$$('#drView button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v==='l'));renderDr()});
+$('#drTbl').addEventListener('keydown',e=>{const t=e.target.closest('tr[data-q]');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t.click()}});
+$('#drClose').addEventListener('click',closeDr);back.addEventListener('click',closeDr);
+document.addEventListener('click',e=>{const b=e.target.closest('.hb-btn');if(b)openDr({code:b.dataset.code})});
+$('#fornTbl').addEventListener('click',e=>{const t=e.target.closest('tr[data-forn]');if(t)openDr({forn:t.dataset.forn})});
+$('#fornTbl').addEventListener('keydown',e=>{const t=e.target.closest('tr[data-forn]');if(t&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t.click()}});
+
+/* ---------- chart renderers per view ---------- */
+const R={
+  visao(){
+    bars($('#chMonth'),{cats:M,series:[{values:S.receita_liquida,cls:'f1'},{values:S.cmv,cls:'f3'}],line:{values:mb,fmt:(v,lab)=>pct(v,lab?1:0)},aria:'Receita líquida, CMV e margem bruta por mês',
+      tip:i=>`<div class="th">${MF[i]}</div>`+tr('bg1','Receita líquida',money(S.receita_liquida[i]))+tr('bg3','CMV',money(S.cmv[i]))+tr('','Resultado operacional',money(S.resultado_operacional[i]))+tr('bgacc','Margem bruta',pct(mb[i]))+tr('','Lucro do mês',money(S.lucro[i]))});
+    waterfall($('#chWater'),[
+      {s:'Receita bruta',l:'Receita bruta',v:RB,k:'t'},{s:'Deduções',l:'Deduções sobre vendas',v:-DED},{s:'Receita líquida',l:'Receita líquida',v:RL,k:'t'},
+      {s:'CMV',l:'Custo dos produtos vendidos',v:-CMV},{s:'Result. operacional',l:'Resultado operacional',v:RO,k:'t'},
+      {s:'Desp. adm.',l:'Despesas administrativas',v:-T.desp_adm},{s:'Desp. comerciais',l:'Despesas comerciais',v:-T.desp_coml},
+      {s:'Desp. financeiras',l:'Despesas financeiras',v:-T.desp_fin},{s:'Outras despesas',l:'Outras despesas',v:-T.outras_desp},
+      {s:'Rec. financeiras',l:'Receitas financeiras e diversas',v:T.rec_fin},...(Math.abs(T.ir_csll)>0.5?[{s:'IRPJ/CSLL',l:'IRPJ e CSLL',v:-T.ir_csll}]:[]),{s:'Lucro',l:'Lucro do período',v:LU,k:'t',last:true}]);
+    if(BR)waterfall($('#chQ2'),QSTEPS,{noPct:true,aria:'Ponte do lucro entre trimestres'});
+  },
+  receita(){
+    bars($('#chRec'),{cats:M,stacked:true,series:RECSER.map(s=>({values:s.values,cls:s.cls})),aria:'Receita bruta por mês',
+      tip:i=>`<div class="th">${MF[i]}</div>`+RECSER.map(s=>tr(s.bg,esc(s.name),money(s.values[i]))).join('')+tr('','Receita bruta',money(S.receita_bruta[i]))+tr('','Deduções',money(-S.deducoes[i]))+tr('','Receita líquida',money(S.receita_liquida[i]))});
+  },
+  custos(){
+    bars($('#chCmv'),{cats:M,stacked:true,series:CB.map(x=>({values:S[x[0]],cls:x[2]})),aria:'Composição do CMV por mês',
+      tip:i=>`<div class="th">${MF[i]}</div>`+CB.map(x=>tr(x[3],x[1],money(S[x[0]][i]))).join('')+tr('','CMV',money(S.cmv[i]))+tr('','% da receita líquida',pct(sdv(S.cmv[i],S.receita_liquida[i])))});
+    if(EST.length){
+      lines($('#chEst'),{cats:M,series:EST.map(s=>({values:s.values,stroke:s.stroke})),aria:'Estoques finais por mês',
+        tip:i=>`<div class="th">Estoque em ${MF[i]}</div>`+EST.map(s=>tr(s.bg,s.name,money(s.values[i]))).join('')+(EST.length>1?tr('','Total',money(sum(EST.map(s=>s.values[i])))):'')});
+      bars($('#chCompra'),{cats:M,series:[{values:S.compras_materiais,cls:'f3'},{values:S.materiais,cls:'f1'}],aria:'Compras e consumo de materiais',
+        tip:i=>`<div class="th">${MF[i]}</div>`+tr('bg3','Compras',money(S.compras_materiais[i]))+tr('bg1','Consumo',money(S.materiais[i]))+tr('',S.variacao_estoque[i]<0?'Aumento do estoque':'Redução do estoque',money(Math.abs(S.variacao_estoque[i])))});
+    }
+  },
+  despesas(){
+    bars($('#chDes'),{cats:M,stacked:true,series:[{values:S.desp_adm,cls:'f1'},{values:S.desp_coml,cls:'f3'},{values:S.desp_fin,cls:'f4'},{values:S.outras_desp,cls:'f5'}],aria:'Despesas por mês',
+      tip:i=>`<div class="th">${MF[i]}</div>`+tr('bg1','Administrativas',money(S.desp_adm[i]))+tr('bg3','Comerciais',money(S.desp_coml[i]))+tr('bg4','Financeiras',money(S.desp_fin[i]))+tr('bg5','Outras',money(S.outras_desp[i]))+tr('','Total',money(S.desp_adm[i]+S.desp_coml[i]+S.desp_fin[i]+S.outras_desp[i]))});
+  },
+  variacao(){varDetail(vSel)},
+  dre(){}
+};
+
+/* ---------- navigation ---------- */
+const VIEWS=['visao','dre','receita','custos','despesas','variacao'];
+const nav=$('#nav');
+VIEWS.forEach((v,i)=>{const b=document.createElement('button');b.type='button';b.className='nav-item';b.dataset.view=v;b.innerHTML=`<span class="nav-k">${String(i+1).padStart(2,'0')}</span>${$('#view-'+v).dataset.title}`;b.addEventListener('click',()=>go(v));nav.appendChild(b)});
+let cur=null;
+function go(v){if(location.hash.slice(1)===v)show(v);else location.hash=v}
+function show(v){if(!VIEWS.includes(v))v='visao';const changed=cur!==v;cur=v;
+  VIEWS.forEach(x=>{$('#view-'+x).hidden=x!==v});
+  $$('.nav-item').forEach(b=>{if(b.dataset.view===v)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+  $('#crumbTitle').textContent=$('#view-'+v).dataset.title;$('#step').textContent=`${VIEWS.indexOf(v)+1} / ${VIEWS.length}`;
+  hideTip();if(changed)window.scrollTo(0,0);requestAnimationFrame(()=>R[v]());
+  const a=$(`.nav-item[data-view="${v}"]`);if(a&&a.scrollIntoView&&innerWidth<=980)a.scrollIntoView({block:'nearest',inline:'center'});
+}
+const step=d=>{const i=(VIEWS.indexOf(cur)+d+VIEWS.length)%VIEWS.length;go(VIEWS[i])};
+$('#prevBtn').addEventListener('click',()=>step(-1));$('#nextBtn').addEventListener('click',()=>step(1));
+document.addEventListener('keydown',e=>{if(!drawer.hidden){if(e.key==='Escape')closeDr();return}if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.metaKey||e.ctrlKey||e.altKey)return;if(e.key==='ArrowRight'){e.preventDefault();step(1)}else if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}});
+addEventListener('hashchange',()=>show(location.hash.slice(1)));
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>R[cur]&&R[cur](),120)});
+const fs=$('#fsBtn');if(!document.fullscreenEnabled)fs.hidden=true;
+fs.addEventListener('click',()=>{try{const p=document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();if(p&&p.catch)p.catch(()=>{fs.hidden=true})}catch(e){fs.hidden=true}});
+const tb=$('#themeBtn');const isDark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches};
+const label=()=>{tb.textContent=isDark()?'Usar tema claro':'Usar tema escuro'};
+try{const t=localStorage.getItem('sx-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
+label();tb.addEventListener('click',()=>{const t=isDark()?'light':'dark';document.documentElement.dataset.theme=t;try{localStorage.setItem('sx-theme',t)}catch(e){}label()});
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',label);
+show(location.hash.slice(1));
+})();
+</script>
+
+</body>
+</html>
